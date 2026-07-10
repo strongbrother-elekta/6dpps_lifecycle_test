@@ -2,7 +2,7 @@ import pytest
 import sys
 
 sys.path.append("..")
-from ppsctrl.ppsctrl_position import PPSCtrl_Position
+from ppsctrl.ppsctrl_fullrange import PPSCtrl_Fullrange
 from ppsctrl.traceclient import TraceClient
 
 DEFAULT_TARGET_HOST = "127.0.0.1"
@@ -25,4 +25,4 @@ def ppsctrl_dut(request):
     """
     traceclient = TraceClient.get_trace_client(request)
     assert not traceclient is None
-    return PPSCtrl_Position(traceclient)
+    return PPSCtrl_Fullrange(traceclient)

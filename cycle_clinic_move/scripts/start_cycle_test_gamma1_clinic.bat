@@ -16,7 +16,7 @@ if %errorlevel%==0 (
     echo "%CURRENT_TIME_STRING%"
 ) else (
 	cd ..
-	python -X faulthandler -m pytest -p no:faulthandler -s --target-host=192.168.30.9 pps_cycle_test_gamma1_clinic.py
+	python -X faulthandler -m pytest -p no:faulthandler -s --target-host=192.168.150.9 pps_cycle_test_gamma1_clinic.py
     echo "pytest script........"
 )
 goto start

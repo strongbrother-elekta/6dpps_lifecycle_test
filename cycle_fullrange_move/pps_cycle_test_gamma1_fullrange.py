@@ -12,7 +12,7 @@ def test_cycle_move(ppsctrl_dut):
     # time.sleep(3)
     ppsctrl_dut.set_z_p_linkage(True)
     config = configparser.ConfigParser()
-    path = r"../configs/position_move/gamma1/config_full_range_gamma1/track_test_config_gamma1_full_range.ini"
+    path = r"../configs/fullrange_move/track_test_config_gamma1_full_range.ini"
     ppsctrl_dut.set_config_path(path)
     # ppsctrl_dut._update_cycle_count()
     config.read(path)

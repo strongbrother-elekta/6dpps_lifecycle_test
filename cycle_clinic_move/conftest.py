@@ -2,7 +2,7 @@ import pytest
 import sys
 
 sys.path.append("..")
-from ppsctrl.ppsctrl_phrases import PPSCtrl_Phrases
+from ppsctrl.ppsctrl_clinic import PPSCtrl_Clinic
 from ppsctrl.traceclient import TraceClient
 
 DEFAULT_TARGET_HOST = "127.0.0.1"
@@ -25,4 +25,4 @@ def ppsctrl_dut(request):
     """
     traceclient = TraceClient.get_trace_client(request)
     assert not traceclient is None
-    return PPSCtrl_Phrases(traceclient)
+    return PPSCtrl_Clinic(traceclient)

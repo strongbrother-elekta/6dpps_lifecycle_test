@@ -37,7 +37,7 @@ def set_log(filename):
 
 #logger = logging.getLogger(__name__)
 
-logger=set_log('../logs/cycle_position_move/hyx_test.log')
+logger=set_log('../logs/fullrange_test.log')
 
 EPSINON = 0.00001
 HEARTBEAT = 0.08
@@ -321,7 +321,7 @@ class TableMoveParamPosition:
 
 
 
-class PPSCtrl_Position:
+class PPSCtrl_Fullrange:
     def __init__(self, traceclient: TraceClient):
         self._log_labels: typing.List[str] = []
         self._log_data: typing.List[str] = []

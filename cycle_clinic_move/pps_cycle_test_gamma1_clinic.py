@@ -8,11 +8,11 @@ import gc
 
 def test_cycle_move(ppsctrl_dut):
 
-    #gc.set_threshold(700,10,10)
+    gc.set_threshold(700,10,10)
     # time.sleep(3)
     ppsctrl_dut.set_z_p_linkage(True)
     config = configparser.ConfigParser()
-    path = r"../configs/phrases_move/gamma1/config_clinic_use_gamma1/track_test_config_gamma1_clinic.ini"
+    path = r"../configs/fullrange_move/track_test_config_gamma1_full_range.ini"
     ppsctrl_dut.set_config_path(path)
     # ppsctrl_dut._update_cycle_count()
     config.read(path)
@@ -22,19 +22,8 @@ def test_cycle_move(ppsctrl_dut):
     
     ppsctrl_dut.send_associate_req()
     assert ppsctrl_dut.recv_associate_rsp()
-    
-    if "p" in axis:
-        ppsctrl_dut.set_p_track_para(
-            config.get("p_axis", "track"),
-            config.get("p_axis", "track_velocity"),
-            config.getint("p_axis", "timeout"),
-            config.getint("p_axis", "mode"),
-            config.getint("test_axis", "left_cycle_p"),
-        )
-        ppsctrl_dut.send_single_axis_pos_move_req_p()
-        #ppsctrl_dut.send_single_axis_count_move_req_p()
-        #ppsctrl_dut.wait_reached_signal_disappear_p()
-        #ppsctrl_dut.wait_reached_signal_appear_p()
+
+
     if "x" in axis:
         ppsctrl_dut.set_x_track_para(
             config.get("x_axis", "track"),
@@ -58,17 +47,7 @@ def test_cycle_move(ppsctrl_dut):
         #ppsctrl_dut.send_single_axis_count_move_req_y()
         #ppsctrl_dut.wait_reached_signal_disappear_y()
 
-    if "r" in axis:
-        ppsctrl_dut.set_r_track_para(
-            config.get("r_axis", "track"),
-            config.get("r_axis", "track_velocity"),
-            config.getint("r_axis", "timeout"),
-            config.getint("r_axis", "mode"),
-            config.getint("test_axis", "left_cycle_r"),
-        )
-        ppsctrl_dut.send_single_axis_pos_move_req_r()
-        #ppsctrl_dut.send_single_axis_count_move_req_r()
-        #ppsctrl_dut.wait_reached_signal_disappear_r()
+
     if "iso" in axis:
         ppsctrl_dut.set_iso_track_para(
             config.get("iso_axis", "track"),
@@ -92,8 +71,33 @@ def test_cycle_move(ppsctrl_dut):
         ppsctrl_dut.send_single_axis_pos_move_req_z()
         #ppsctrl_dut.send_single_axis_count_move_req_z()
         #ppsctrl_dut.wait_reached_signal_disappear_z()
+    
+    if "p" in axis:
+        ppsctrl_dut.set_p_track_para(
+            config.get("p_axis", "track"),
+            config.get("p_axis", "track_velocity"),
+            config.getint("p_axis", "timeout"),
+            config.getint("p_axis", "mode"),
+            config.getint("test_axis", "left_cycle_p"),
+        )
+        ppsctrl_dut.send_single_axis_pos_move_req_p()
+        #ppsctrl_dut.send_single_axis_count_move_req_p()
+        #ppsctrl_dut.wait_reached_signal_disappear_p()
+        #ppsctrl_dut.wait_reached_signal_appear_p()   
 
-    time.sleep(0.5)
+    if "r" in axis:
+        ppsctrl_dut.set_r_track_para(
+            config.get("r_axis", "track"),
+            config.get("r_axis", "track_velocity"),
+            config.getint("r_axis", "timeout"),
+            config.getint("r_axis", "mode"),
+            config.getint("test_axis", "left_cycle_r"),
+        )
+        ppsctrl_dut.send_single_axis_pos_move_req_r()
+        #ppsctrl_dut.send_single_axis_count_move_req_r()
+        #ppsctrl_dut.wait_reached_signal_disappear_r()
+    time.sleep(10)
+    
     ppsctrl_dut.display_axis_para()
 
     assert (
@@ -106,9 +110,10 @@ def test_cycle_move(ppsctrl_dut):
     )
 
 
-    
+
     ppsctrl_dut.create_start_thread()
     assert ppsctrl_dut.track_schedule_process()
+
     
     
 
