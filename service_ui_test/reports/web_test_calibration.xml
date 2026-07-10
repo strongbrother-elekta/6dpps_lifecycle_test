@@ -1,0 +1,155 @@
+<?xml version="1.0" encoding="utf-8"?><testsuites><testsuite name="pytest" errors="0" failures="7" skipped="0" tests="8" time="26.588" timestamp="2025-12-12T11:59:19.495068+08:00" hostname="SEQUENCER"><testcase classname="web_test_calibration" name="test_cali_x" time="5.013"><failure message="AssertionError: assert False&#10; +  where False = &lt;DrissionPage._units.clicker.Clicker object at 0x000001B07597D690&gt;()&#10; +    where &lt;DrissionPage._units.clicker.Clicker object at 0x000001B07597D690&gt; = &lt;ChromiumElement input title='start' type='button' value='START' class='is-disable' disabled='disabled'&gt;.click&#10; +      where &lt;ChromiumElement input title='start' type='button' value='START' class='is-disable' disabled='disabled'&gt; = ele('@value=START')&#10; +        where ele = &lt;ChromiumElement div class='btn-container'&gt;.ele">openpage_st = &lt;ChromiumPage browser_id=7d04b410-5ffe-43be-864f-84710bc4c11d tab_id=2AFB838B0E7B5E49C27D534E3E7568BB&gt;
+
+    def test_cali_x(openpage_st):
+        sleep(1)
+        openpage_st.ele('@id:axios').select('lateral')
+        element = openpage_st.ele('@class=btn-container')
+        sleep(1)
+&gt;       assert(element.ele('@value=START').click())
+E       AssertionError: assert False
+E        +  where False = &lt;DrissionPage._units.clicker.Clicker object at 0x000001B07597D690&gt;()
+E        +    where &lt;DrissionPage._units.clicker.Clicker object at 0x000001B07597D690&gt; = &lt;ChromiumElement input title='start' type='button' value='START' class='is-disable' disabled='disabled'&gt;.click
+E        +      where &lt;ChromiumElement input title='start' type='button' value='START' class='is-disable' disabled='disabled'&gt; = ele('@value=START')
+E        +        where ele = &lt;ChromiumElement div class='btn-container'&gt;.ele
+
+web_test_calibration.py:15: AssertionError</failure></testcase><testcase classname="web_test_calibration" name="test_cali_y" time="3.572"><failure message="AssertionError: assert False&#10; +  where False = &lt;DrissionPage._units.clicker.Clicker object at 0x000001B075A38790&gt;()&#10; +    where &lt;DrissionPage._units.clicker.Clicker object at 0x000001B075A38790&gt; = &lt;ChromiumElement input title='start' type='button' value='START' class='is-disable' disabled='disabled'&gt;.click&#10; +      where &lt;ChromiumElement input title='start' type='button' value='START' class='is-disable' disabled='disabled'&gt; = ele('@value=START')&#10; +        where ele = &lt;ChromiumElement div class='btn-container'&gt;.ele">openpage_st = &lt;ChromiumPage browser_id=7d04b410-5ffe-43be-864f-84710bc4c11d tab_id=2AFB838B0E7B5E49C27D534E3E7568BB&gt;
+
+    def test_cali_y(openpage_st):
+        sleep(1)
+        openpage_st.ele('@id:axios').select('longitudinal')
+        element = openpage_st.ele('@class=btn-container')
+        sleep(1)
+&gt;       assert(element.ele('@value=START').click())
+E       AssertionError: assert False
+E        +  where False = &lt;DrissionPage._units.clicker.Clicker object at 0x000001B075A38790&gt;()
+E        +    where &lt;DrissionPage._units.clicker.Clicker object at 0x000001B075A38790&gt; = &lt;ChromiumElement input title='start' type='button' value='START' class='is-disable' disabled='disabled'&gt;.click
+E        +      where &lt;ChromiumElement input title='start' type='button' value='START' class='is-disable' disabled='disabled'&gt; = ele('@value=START')
+E        +        where ele = &lt;ChromiumElement div class='btn-container'&gt;.ele
+
+web_test_calibration.py:29: AssertionError</failure></testcase><testcase classname="web_test_calibration" name="test_cali_z" time="3.543"><failure message="AssertionError: assert False&#10; +  where False = &lt;DrissionPage._units.clicker.Clicker object at 0x000001B075984C90&gt;()&#10; +    where &lt;DrissionPage._units.clicker.Clicker object at 0x000001B075984C90&gt; = &lt;ChromiumElement input title='start' type='button' value='START' class='is-disable' disabled='disabled'&gt;.click&#10; +      where &lt;ChromiumElement input title='start' type='button' value='START' class='is-disable' disabled='disabled'&gt; = ele('@value=START')&#10; +        where ele = &lt;ChromiumElement div class='btn-container'&gt;.ele">openpage_st = &lt;ChromiumPage browser_id=7d04b410-5ffe-43be-864f-84710bc4c11d tab_id=2AFB838B0E7B5E49C27D534E3E7568BB&gt;
+
+    def test_cali_z(openpage_st):
+        sleep(1)
+        openpage_st.ele('@id:axios').select('vertical')
+        element = openpage_st.ele('@class=btn-container')
+        sleep(1)
+&gt;       assert(element.ele('@value=START').click())
+E       AssertionError: assert False
+E        +  where False = &lt;DrissionPage._units.clicker.Clicker object at 0x000001B075984C90&gt;()
+E        +    where &lt;DrissionPage._units.clicker.Clicker object at 0x000001B075984C90&gt; = &lt;ChromiumElement input title='start' type='button' value='START' class='is-disable' disabled='disabled'&gt;.click
+E        +      where &lt;ChromiumElement input title='start' type='button' value='START' class='is-disable' disabled='disabled'&gt; = ele('@value=START')
+E        +        where ele = &lt;ChromiumElement div class='btn-container'&gt;.ele
+
+web_test_calibration.py:43: AssertionError</failure></testcase><testcase classname="web_test_calibration" name="test_cali_p" time="3.558"><failure message="AssertionError: assert False&#10; +  where False = &lt;DrissionPage._units.clicker.Clicker object at 0x000001B07597A250&gt;()&#10; +    where &lt;DrissionPage._units.clicker.Clicker object at 0x000001B07597A250&gt; = &lt;ChromiumElement input title='start' type='button' value='START' class='is-disable' disabled='disabled'&gt;.click&#10; +      where &lt;ChromiumElement input title='start' type='button' value='START' class='is-disable' disabled='disabled'&gt; = ele('@value=START')&#10; +        where ele = &lt;ChromiumElement div class='btn-container'&gt;.ele">openpage_st = &lt;ChromiumPage browser_id=7d04b410-5ffe-43be-864f-84710bc4c11d tab_id=2AFB838B0E7B5E49C27D534E3E7568BB&gt;
+
+    def test_cali_p(openpage_st):
+        sleep(1)
+        openpage_st.ele('@id:axios').select('pitch')
+        element = openpage_st.ele('@class=btn-container')
+        sleep(1)
+&gt;       assert(element.ele('@value=START').click())
+E       AssertionError: assert False
+E        +  where False = &lt;DrissionPage._units.clicker.Clicker object at 0x000001B07597A250&gt;()
+E        +    where &lt;DrissionPage._units.clicker.Clicker object at 0x000001B07597A250&gt; = &lt;ChromiumElement input title='start' type='button' value='START' class='is-disable' disabled='disabled'&gt;.click
+E        +      where &lt;ChromiumElement input title='start' type='button' value='START' class='is-disable' disabled='disabled'&gt; = ele('@value=START')
+E        +        where ele = &lt;ChromiumElement div class='btn-container'&gt;.ele
+
+web_test_calibration.py:57: AssertionError</failure></testcase><testcase classname="web_test_calibration" name="test_cali_r" time="3.584"><failure message="AssertionError: assert False&#10; +  where False = &lt;DrissionPage._units.clicker.Clicker object at 0x000001B075A39990&gt;()&#10; +    where &lt;DrissionPage._units.clicker.Clicker object at 0x000001B075A39990&gt; = &lt;ChromiumElement input title='start' type='button' value='START' class='is-disable' disabled='disabled'&gt;.click&#10; +      where &lt;ChromiumElement input title='start' type='button' value='START' class='is-disable' disabled='disabled'&gt; = ele('@value=START')&#10; +        where ele = &lt;ChromiumElement div class='btn-container'&gt;.ele">openpage_st = &lt;ChromiumPage browser_id=7d04b410-5ffe-43be-864f-84710bc4c11d tab_id=2AFB838B0E7B5E49C27D534E3E7568BB&gt;
+
+    def test_cali_r(openpage_st):
+        sleep(1)
+        openpage_st.ele('@id:axios').select('roll')
+        element = openpage_st.ele('@class=btn-container')
+        sleep(1)
+&gt;       assert(element.ele('@value=START').click())
+E       AssertionError: assert False
+E        +  where False = &lt;DrissionPage._units.clicker.Clicker object at 0x000001B075A39990&gt;()
+E        +    where &lt;DrissionPage._units.clicker.Clicker object at 0x000001B075A39990&gt; = &lt;ChromiumElement input title='start' type='button' value='START' class='is-disable' disabled='disabled'&gt;.click
+E        +      where &lt;ChromiumElement input title='start' type='button' value='START' class='is-disable' disabled='disabled'&gt; = ele('@value=START')
+E        +        where ele = &lt;ChromiumElement div class='btn-container'&gt;.ele
+
+web_test_calibration.py:71: AssertionError</failure></testcase><testcase classname="web_test_calibration" name="test_cali_iso" time="3.557"><failure message="AssertionError: assert False&#10; +  where False = &lt;DrissionPage._units.clicker.Clicker object at 0x000001B07597DE90&gt;()&#10; +    where &lt;DrissionPage._units.clicker.Clicker object at 0x000001B07597DE90&gt; = &lt;ChromiumElement input title='start' type='button' value='START' class='is-disable' disabled='disabled'&gt;.click&#10; +      where &lt;ChromiumElement input title='start' type='button' value='START' class='is-disable' disabled='disabled'&gt; = ele('@value=START')&#10; +        where ele = &lt;ChromiumElement div class='btn-container'&gt;.ele">openpage_st = &lt;ChromiumPage browser_id=7d04b410-5ffe-43be-864f-84710bc4c11d tab_id=2AFB838B0E7B5E49C27D534E3E7568BB&gt;
+
+    def test_cali_iso(openpage_st):
+        sleep(1)
+        openpage_st.ele('@id:axios').select('iso')
+        element = openpage_st.ele('@class=btn-container')
+        sleep(1)
+&gt;       assert(element.ele('@value=START').click())
+E       AssertionError: assert False
+E        +  where False = &lt;DrissionPage._units.clicker.Clicker object at 0x000001B07597DE90&gt;()
+E        +    where &lt;DrissionPage._units.clicker.Clicker object at 0x000001B07597DE90&gt; = &lt;ChromiumElement input title='start' type='button' value='START' class='is-disable' disabled='disabled'&gt;.click
+E        +      where &lt;ChromiumElement input title='start' type='button' value='START' class='is-disable' disabled='disabled'&gt; = ele('@value=START')
+E        +        where ele = &lt;ChromiumElement div class='btn-container'&gt;.ele
+
+web_test_calibration.py:85: AssertionError</failure></testcase><testcase classname="web_test_calibration" name="test_cali_column" time="2.736"><failure message="DrissionPage.errors.PageDisconnectedError: &#10;与页面的连接已断开。&#10;版本: 4.1.1.2">openpage_st = &lt;ChromiumPage browser_id=7d04b410-5ffe-43be-864f-84710bc4c11d tab_id=2AFB838B0E7B5E49C27D534E3E7568BB&gt;
+
+    def test_cali_column(openpage_st):
+        sleep(1)
+        openpage_st.ele('@id:axios').select('column')
+        element = openpage_st.ele('@class=btn-container')
+        sleep(1)
+&gt;       assert(element.ele('@value=START').click())
+
+web_test_calibration.py:100: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+C:\Users\seq\AppData\Local\Programs\Python\Python311\Lib\site-packages\DrissionPage\_units\clicker.py:23: in __call__
+    return self.left(by_js, timeout, wait_stop)
+C:\Users\seq\AppData\Local\Programs\Python\Python311\Lib\site-packages\DrissionPage\_units\clicker.py:63: in left
+    if self._ele.states.is_enabled and self._ele.states.is_displayed:
+C:\Users\seq\AppData\Local\Programs\Python\Python311\Lib\site-packages\DrissionPage\_units\states.py:32: in is_enabled
+    return not self._ele._run_js('return this.disabled;')
+C:\Users\seq\AppData\Local\Programs\Python\Python311\Lib\site-packages\DrissionPage\_elements\chromium_element.py:414: in _run_js
+    return run_js(self, script, as_expr, self.owner.timeouts.script if timeout is None else timeout, args)
+C:\Users\seq\AppData\Local\Programs\Python\Python311\Lib\site-packages\DrissionPage\_elements\chromium_element.py:1229: in run_js
+    res = page._run_cdp('Runtime.callFunctionOn', functionDeclaration=script, objectId=obj_id,
+C:\Users\seq\AppData\Local\Programs\Python\Python311\Lib\site-packages\DrissionPage\_pages\chromium_base.py:389: in _run_cdp
+    return r if __ERROR__ not in r else raise_error(r, self.browser, ignore)
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+result = {'args': {'_timeout': 30, 'arguments': [], 'awaitPromise': True, 'functionDeclaration': 'function(){return this.disabled;}', ...}, 'data': None, 'error': 'connection disconnected', 'method': 'Runtime.callFunctionOn', ...}
+browser = &lt;DrissionPage._base.chromium.Chromium object at 0x000001B074610A50&gt;, ignore = &lt;class 'DrissionPage.errors.AlertExistsError'&gt;, user = False
+
+    def raise_error(result, browser, ignore=None, user=False):
+        error = result['error']
+        if error in ('Cannot find context with specified id', 'Inspected target navigated or closed',
+                     'No frame with given id found'):
+            r = ContextLostError()
+        elif error in ('Could not find node with given id', 'Could not find object with given id',
+                       'No node with given id found', 'Node with given id does not belong to the document',
+                       'No node found for given backend id'):
+            r = ElementLostError()
+        elif error in ('connection disconnected', 'No target with given id found'):
+            r = PageDisconnectedError()
+        elif error == 'alert exists.':
+            r = AlertExistsError()
+        elif error in ('Node does not have a layout object', 'Could not compute box model.'):
+            r = NoRectError()
+        elif error == 'Cannot navigate to invalid URL':
+            r = IncorrectURLError(_S._lang.INVALID_URL, url=result["args"]["url"])
+        elif error == 'Frame corresponds to an opaque origin and its storage key cannot be serialized':
+            r = StorageError()
+        elif error == 'Sanitizing cookie failed':
+            r = CookieFormatError(cookies=result["args"])
+        elif error == 'Invalid header name':
+            r = ValueError(_S._lang.join(_S._lang.INVALID_HEADER_NAME, headers=result["args"]["headers"]))
+        elif error == 'Given expression does not evaluate to a function':
+            r = JavaScriptError(_S._lang.NOT_A_FUNCTION, JS=result["args"]["functionDeclaration"])
+        elif error.endswith("' wasn't found"):
+            r = RuntimeError(_S._lang.join(_S._lang.METHOD_NOT_FOUND, BROWSER_VER=browser.version, METHOD=result["method"]))
+        elif result['type'] == 'timeout':
+            r = TimeoutError(_S._lang.join(_S._lang.NO_RESPONSE, INFO=result["error"],
+                                           METHOD=result["method"], ARGS=result["args"]))
+        elif result['type'] == 'call_method_error' and not user:
+            r = CDPError(_S._lang.UNKNOWN_ERR, INFO=result["error"], METHOD=result["method"],
+                         ARGS=result["args"], TIP=_S._lang.FEEDBACK)
+        else:
+            r = RuntimeError(_S._lang.join(_S._lang.UNKNOWN_ERR, INFO=result, TIP=_S._lang.FEEDBACK))
+    
+        if not ignore or not isinstance(r, ignore):
+&gt;           raise r
+E           DrissionPage.errors.PageDisconnectedError: 
+E           与页面的连接已断开。
+E           版本: 4.1.1.2
+
+C:\Users\seq\AppData\Local\Programs\Python\Python311\Lib\site-packages\DrissionPage\_functions\tools.py:199: PageDisconnectedError</failure></testcase><testcase classname="web_test_calibration" name="test_close_web" time="0.597" /></testsuite></testsuites>

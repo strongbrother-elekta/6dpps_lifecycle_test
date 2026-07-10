@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?><testsuites><testsuite name="pytest" errors="0" failures="1" skipped="0" tests="1" time="0.240" timestamp="2024-09-25T16:17:01.233895" hostname="AP-gFSNObau0HZh"><testcase classname="pps_track_test_fp3-7_clinic" name="test_cycle_move" time="0.089"><failure message="AttributeError: Protocol message CountMoveAxisReq has no &quot;req_id&quot; field.">ppsctrl_dut = &lt;ppsctrl.ppsctrl_count.PPSCtrl_Count object at 0x0439E2F8&gt;
+
+    def test_cycle_move(ppsctrl_dut):
+    
+        #gc.set_threshold(700,10,10)
+        # time.sleep(3)
+        ppsctrl_dut.set_z_p_linkage(True)
+        config = configparser.ConfigParser()
+        path = r"./track_test_config_fp3-7_clinic.ini"
+        ppsctrl_dut.set_config_path(path)
+        # ppsctrl_dut._update_cycle_count()
+        config.read(path)
+    
+        axis = config.get("test_axis", "axis")
+        logging.info(f"axis : {axis}")
+    
+        ppsctrl_dut.send_associate_req()
+        assert ppsctrl_dut.recv_associate_rsp()
+    
+        if "p" in axis:
+            ppsctrl_dut.set_p_track_para(
+                config.get("p_axis", "track"),
+                config.get("p_axis", "track_velocity"),
+                config.getint("p_axis", "timeout"),
+                config.getint("p_axis", "mode"),
+                config.getint("test_axis", "left_cycle_p"),
+            )
+&gt;           ppsctrl_dut.send_single_axis_count_move_req_p()
+
+pps_track_test_fp3-7_clinic.py:34: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+..\ppsctrl\ppsctrl_count.py:938: in send_single_axis_count_move_req_p
+    return self._send_single_axis_count_move_req(self.p)
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+self = &lt;ppsctrl.ppsctrl_count.PPSCtrl_Count object at 0x0439E2F8&gt;
+movePara = &lt;ppsctrl.ppsctrl_count.TableMoveParamCount object at 0x0439E2C8&gt;
+
+    def _send_single_axis_count_move_req(self, movePara: TableMoveParamCount):
+        serverRx = tblservicemode_pb2.ServerRx()
+        axisReq = serverRx.count_move_req.reqs.add()
+        axisReq.axis = movePara.axis
+        axisReq.count = movePara.count
+        axisReq.count_velocity = movePara.count_velocity
+        axisReq.mode = movePara.mode
+        self.req_id+=1
+&gt;       axisReq.req_id=self.req_id
+E       AttributeError: Protocol message CountMoveAxisReq has no "req_id" field.
+
+..\ppsctrl\ppsctrl_count.py:915: AttributeError</failure></testcase></testsuite></testsuites>

@@ -1,0 +1,474 @@
+2026-07-09 11:14:36,912 Line63 [INFO] Connecting to 192.168.150.9:6662...
+2026-07-09 11:14:36,914 Line66 [INFO] Connected
+2026-07-09 11:14:36,923 Line21 [INFO] axis : p,x,y,z,r,iso
+2026-07-09 11:14:36,929 Line820 [INFO] send_associate_req : association_id: 1
+sequence_num_bi: 1
+assoc_req {
+  version: "1.0.0.74"
+}
+
+2026-07-09 11:14:58,221 Line840 [INFO] parse_serverTx : association_id: 3
+sequence_num_bi: 1
+assoc_rep {
+  status_code: SUCCESS
+}
+
+2026-07-09 11:14:58,222 Line989 [INFO] send_single_axis_pos_move_req_x
+2026-07-09 11:14:58,222 Line978 [INFO] position move req : axis:1,reqpos:0.0
+2026-07-09 11:14:58,223 Line978 [INFO] position move req : axis:2,reqpos:50.0
+2026-07-09 11:14:58,223 Line978 [INFO] position move req : axis:6,reqpos:0.0
+2026-07-09 11:14:58,223 Line978 [INFO] position move req : axis:3,reqpos:0.0
+2026-07-09 11:14:58,223 Line978 [INFO] position move req : axis:5,reqpos:0.0
+2026-07-09 11:14:58,223 Line978 [INFO] position move req : axis:4,reqpos:0.0
+2026-07-09 11:24:33,988 Line63 [INFO] Connecting to 192.168.150.9:6662...
+2026-07-09 11:24:33,989 Line66 [INFO] Connected
+2026-07-09 11:24:34,028 Line21 [INFO] axis : p,x,y,z,r,iso
+2026-07-09 11:24:34,034 Line820 [INFO] send_associate_req : association_id: 1
+sequence_num_bi: 1
+assoc_req {
+  version: "1.0.0.74"
+}
+
+2026-07-09 11:24:34,100 Line840 [INFO] parse_serverTx : association_id: 4
+sequence_num_bi: 1
+assoc_rep {
+  status_code: SUCCESS
+}
+
+2026-07-09 11:24:34,100 Line989 [INFO] send_single_axis_pos_move_req_x
+2026-07-09 11:24:34,101 Line978 [INFO] position move req : axis:1,reqpos:0.0
+2026-07-09 11:24:34,101 Line978 [INFO] position move req : axis:2,reqpos:50.0
+2026-07-09 11:24:34,101 Line978 [INFO] position move req : axis:6,reqpos:0.0
+2026-07-09 11:24:34,102 Line978 [INFO] position move req : axis:3,reqpos:0.0
+2026-07-09 11:24:34,102 Line978 [INFO] position move req : axis:5,reqpos:0.0
+2026-07-09 11:24:34,102 Line978 [INFO] position move req : axis:4,reqpos:0.0
+2026-07-09 11:24:44,103 Line1201 [INFO] x axis : 1, 0, 0, 5.0, 1200, 0, 81062, ['0', '25', '0', '-20', '0'], ['5', '5', '5', '5', '5']
+2026-07-09 11:24:44,105 Line1205 [INFO] y axis : 2, 0, 0, 9.0, 1200, 0, 81062, ['500', '1000', '500', '0', '500'], ['9', '9', '9', '9', '9']
+2026-07-09 11:24:44,106 Line1209 [INFO] z axis : 3, 0, 0, 0, 5, 1200, 0, 81062, ['0', '-42', '0', '27', '0'], ['5', '5', '5', '5', '5']
+2026-07-09 11:24:44,108 Line1213 [INFO] r axis : 4, 0, 0, 0.7, 600, 0, 81107, ['0', '3', '0', '-3', '0'], ['0.7', ' 0.7', ' 0.7', ' 0.7', ' 0.7']
+2026-07-09 11:24:44,111 Line1217 [INFO] p axis : 5, 0, 0, 0.7, 1200, 0, 81083, ['0', '3', '0', '-3', '0'], ['0.7', ' 0.7', ' 0.7', ' 0.7', ' 0.7']
+2026-07-09 11:24:44,113 Line1221 [INFO] iso axis : 6, 0, 0, 6.0, 1200, 0, 81073, ['0', '96', '0', '-85', '0'], ['6', ' 6', ' 6', ' 6', ' 6']
+2026-07-09 11:24:44,118 Line264 [INFO] thread Thread-heartbeat started at Thu Jul  9 11:24:44 2026
+2026-07-09 11:24:44,120 Line64 [INFO] thread Thread-x started at Thu Jul  9 11:24:44 2026
+2026-07-09 11:24:44,122 Line97 [INFO] thread Thread-y started at Thu Jul  9 11:24:44 2026
+2026-07-09 11:24:44,122 Line127 [INFO] thread Thread-z started at Thu Jul  9 11:24:44 2026
+2026-07-09 11:24:44,123 Line158 [INFO] thread Thread-p started at Thu Jul  9 11:24:44 2026
+2026-07-09 11:24:44,123 Line192 [INFO] thread Thread-r started at Thu Jul  9 11:24:44 2026
+2026-07-09 11:24:44,124 Line228 [INFO] thread Thread-iso started at Thu Jul  9 11:24:44 2026
+2026-07-09 11:24:44,124 Line1280 [INFO] system's garbege threasholds:(700, 10, 0)
+2026-07-09 11:24:44,131 Line1350 [INFO] ------------------------------------p : True,sef.p.count:0.0,target:0.0 abs:0.0
+2026-07-09 11:24:44,132 Line1368 [INFO] ------------------------------------r : True,sef.r.count:0.0,target:-0.0031 abs:0.0031
+2026-07-09 11:24:44,134 Line1377 [INFO] ------------------------------------iso : True,sef.iso.count:0.0,target:0.0 abs:0.0
+2026-07-09 11:27:20,419 Line63 [INFO] Connecting to 192.168.150.9:6662...
+2026-07-09 11:27:20,423 Line66 [INFO] Connected
+2026-07-09 11:27:20,426 Line21 [INFO] axis : p,x,y,z,r,iso
+2026-07-09 11:27:20,432 Line820 [INFO] send_associate_req : association_id: 1
+sequence_num_bi: 1
+assoc_req {
+  version: "1.0.0.74"
+}
+
+2026-07-09 11:27:20,511 Line840 [INFO] parse_serverTx : association_id: 5
+sequence_num_bi: 1
+assoc_rep {
+  status_code: SUCCESS
+}
+
+2026-07-09 11:27:20,512 Line989 [INFO] send_single_axis_pos_move_req_x
+2026-07-09 11:27:20,512 Line978 [INFO] position move req : axis:1,reqpos:0.0
+2026-07-09 11:27:20,513 Line978 [INFO] position move req : axis:2,reqpos:50.0
+2026-07-09 11:27:20,513 Line978 [INFO] position move req : axis:6,reqpos:0.0
+2026-07-09 11:27:20,514 Line978 [INFO] position move req : axis:3,reqpos:0.0
+2026-07-09 11:27:20,514 Line978 [INFO] position move req : axis:5,reqpos:0.0
+2026-07-09 11:27:20,515 Line978 [INFO] position move req : axis:4,reqpos:0.0
+2026-07-09 11:27:30,516 Line1201 [INFO] x axis : 1, 0, 0, 5.0, 1200, 0, 81062, ['0', '25', '0', '-20', '0'], ['5', '5', '5', '5', '5']
+2026-07-09 11:27:30,516 Line1205 [INFO] y axis : 2, 0, 0, 9.0, 1200, 0, 81062, ['500', '1000', '500', '0', '500'], ['9', '9', '9', '9', '9']
+2026-07-09 11:27:30,516 Line1209 [INFO] z axis : 3, 0, 0, 0, 5, 1200, 0, 81062, ['0', '-42', '0', '27', '0'], ['5', '5', '5', '5', '5']
+2026-07-09 11:27:30,517 Line1213 [INFO] r axis : 4, 0, 0, 0.7, 600, 0, 81107, ['0', '3', '0', '-3', '0'], ['0.7', ' 0.7', ' 0.7', ' 0.7', ' 0.7']
+2026-07-09 11:27:30,517 Line1217 [INFO] p axis : 5, 0, 0, 0.7, 1200, 0, 81083, ['0', '3', '0', '-3', '0'], ['0.7', ' 0.7', ' 0.7', ' 0.7', ' 0.7']
+2026-07-09 11:27:30,517 Line1221 [INFO] iso axis : 6, 0, 0, 6.0, 1200, 0, 81073, ['0', '96', '0', '-85', '0'], ['6', ' 6', ' 6', ' 6', ' 6']
+2026-07-09 11:27:30,518 Line264 [INFO] thread Thread-heartbeat started at Thu Jul  9 11:27:30 2026
+2026-07-09 11:27:30,518 Line64 [INFO] thread Thread-x started at Thu Jul  9 11:27:30 2026
+2026-07-09 11:27:30,519 Line97 [INFO] thread Thread-y started at Thu Jul  9 11:27:30 2026
+2026-07-09 11:27:30,519 Line127 [INFO] thread Thread-z started at Thu Jul  9 11:27:30 2026
+2026-07-09 11:27:30,520 Line158 [INFO] thread Thread-p started at Thu Jul  9 11:27:30 2026
+2026-07-09 11:27:30,520 Line192 [INFO] thread Thread-r started at Thu Jul  9 11:27:30 2026
+2026-07-09 11:27:30,520 Line228 [INFO] thread Thread-iso started at Thu Jul  9 11:27:30 2026
+2026-07-09 11:27:30,520 Line1280 [INFO] system's garbege threasholds:(700, 10, 0)
+2026-07-09 11:27:30,522 Line1377 [INFO] ------------------------------------iso : True,sef.iso.count:0.0,target:0.9944497891019979 abs:0.9944497891019979
+2026-07-09 11:27:30,664 Line1338 [INFO] ------------------------------------x : True,sef.x.count:0.0,target:0.0 abs:0.0
+2026-07-09 11:27:30,665 Line1344 [INFO] ------------------------------------y : True,sef.y.count:50.0,target:50.0 abs:0.0
+2026-07-09 11:27:30,666 Line77 [INFO] ------axis_move_handler_x-------- 1/5/25/False
+2026-07-09 11:27:30,667 Line1359 [INFO] ------------------------------------z : True,sef.z.count:0,target:2.4424906541753446e-16,abs:2.4424906541753446e-16
+2026-07-09 11:27:30,667 Line110 [INFO] ------axis_move_handler_y-------- 1/5/1000/False
+2026-07-09 11:27:30,667 Line140 [INFO] ------axis_move_handler_z-------- 1/5/-42.0/False
+2026-07-09 11:27:30,668 Line1350 [INFO] ------------------------------------p : True,sef.p.count:0.0,target:0.0 abs:0.0
+2026-07-09 11:27:30,670 Line1368 [INFO] ------------------------------------r : True,sef.r.count:0.0,target:0.0031 abs:0.0031
+2026-07-09 11:27:31,668 Line989 [INFO] send_single_axis_pos_move_req_x
+2026-07-09 11:27:31,669 Line978 [INFO] position move req : axis:3,reqpos:-42.0
+2026-07-09 11:27:31,669 Line978 [INFO] position move req : axis:2,reqpos:100.0
+2026-07-09 11:27:31,681 Line978 [INFO] position move req : axis:1,reqpos:25.0
+2026-07-09 11:27:37,040 Line1338 [INFO] ------------------------------------x : True,sef.x.count:2.5,target:25.0 abs:22.5
+2026-07-09 11:27:37,045 Line77 [INFO] ------axis_move_handler_x-------- 2/5/0/False
+2026-07-09 11:27:37,540 Line1344 [INFO] ------------------------------------y : True,sef.y.count:100.0,target:100.0 abs:0.0
+2026-07-09 11:27:37,541 Line110 [INFO] ------axis_move_handler_y-------- 2/5/500/False
+2026-07-09 11:27:38,046 Line989 [INFO] send_single_axis_pos_move_req_x
+2026-07-09 11:27:38,047 Line978 [INFO] position move req : axis:1,reqpos:0.0
+2026-07-09 11:27:38,542 Line978 [INFO] position move req : axis:2,reqpos:50.0
+2026-07-09 11:27:40,364 Line1359 [INFO] ------------------------------------z : True,sef.z.count:-42.0,target:-42.00003725306539,abs:3.725306539337225e-05
+2026-07-09 11:27:40,365 Line140 [INFO] ------axis_move_handler_z-------- 2/5/0.0/False
+2026-07-09 11:27:41,366 Line978 [INFO] position move req : axis:3,reqpos:0.0
+2026-07-09 11:27:43,315 Line1338 [INFO] ------------------------------------x : True,sef.x.count:0.0,target:0.0 abs:0.0
+2026-07-09 11:27:43,319 Line77 [INFO] ------axis_move_handler_x-------- 3/5/-20/False
+2026-07-09 11:27:44,320 Line989 [INFO] send_single_axis_pos_move_req_x
+2026-07-09 11:27:44,320 Line978 [INFO] position move req : axis:1,reqpos:-20.0
+2026-07-09 11:27:44,415 Line1344 [INFO] ------------------------------------y : True,sef.y.count:50.0,target:50.0 abs:0.0
+2026-07-09 11:27:44,422 Line110 [INFO] ------axis_move_handler_y-------- 3/5/0/False
+2026-07-09 11:27:45,423 Line978 [INFO] position move req : axis:2,reqpos:0.0
+2026-07-09 11:27:48,570 Line1338 [INFO] ------------------------------------x : True,sef.x.count:-2.0,target:-19.9999755859375 abs:17.9999755859375
+2026-07-09 11:27:48,573 Line77 [INFO] ------axis_move_handler_x-------- 4/5/0/False
+2026-07-09 11:27:49,574 Line989 [INFO] send_single_axis_pos_move_req_x
+2026-07-09 11:27:49,576 Line978 [INFO] position move req : axis:1,reqpos:0.0
+2026-07-09 11:27:50,095 Line1359 [INFO] ------------------------------------z : True,sef.z.count:0.0,target:2.4424906541753446e-16,abs:2.4424906541753446e-16
+2026-07-09 11:27:50,098 Line140 [INFO] ------axis_move_handler_z-------- 3/5/27.0/False
+2026-07-09 11:27:51,099 Line978 [INFO] position move req : axis:3,reqpos:27.0
+2026-07-09 11:27:51,320 Line1344 [INFO] ------------------------------------y : True,sef.y.count:0.0,target:2.44140625e-05 abs:2.44140625e-05
+2026-07-09 11:27:51,329 Line110 [INFO] ------axis_move_handler_y-------- 4/5/500/False
+2026-07-09 11:27:52,330 Line978 [INFO] position move req : axis:2,reqpos:50.0
+2026-07-09 11:27:53,844 Line1338 [INFO] ------------------------------------x : True,sef.x.count:0.0,target:0.0 abs:0.0
+2026-07-09 11:27:56,770 Line1359 [INFO] ------------------------------------z : True,sef.z.count:27.0,target:26.999957425068118,abs:4.257493188219996e-05
+2026-07-09 11:27:56,771 Line140 [INFO] ------axis_move_handler_z-------- 4/5/0.0/False
+2026-07-09 11:27:57,772 Line978 [INFO] position move req : axis:3,reqpos:0.0
+2026-07-09 11:27:57,773 Line172 [INFO] ------axis_move_handler_p-------- 1/5/3.0/False
+2026-07-09 11:27:58,096 Line1344 [INFO] ------------------------------------y : True,sef.y.count:50.0,target:50.0 abs:0.0
+2026-07-09 11:27:58,774 Line978 [INFO] position move req : axis:5,reqpos:3.0
+2026-07-09 11:28:03,471 Line1359 [INFO] ------------------------------------z : True,sef.z.count:0.0,target:2.4424906541753446e-16,abs:2.4424906541753446e-16
+2026-07-09 11:28:06,398 Line1350 [INFO] ------------------------------------p : True,sef.p.count:3.0,target:2.998 abs:0.0019999999999997797
+2026-07-09 11:28:06,399 Line172 [INFO] ------axis_move_handler_p-------- 2/5/0.0/False
+2026-07-09 11:28:07,400 Line978 [INFO] position move req : axis:5,reqpos:0.0
+2026-07-09 11:28:12,675 Line1350 [INFO] ------------------------------------p : True,sef.p.count:0.0,target:0.0 abs:0.0
+2026-07-09 11:28:12,681 Line172 [INFO] ------axis_move_handler_p-------- 3/5/-3.0/False
+2026-07-09 11:28:13,684 Line978 [INFO] position move req : axis:5,reqpos:-3.0
+2026-07-09 11:28:18,653 Line1350 [INFO] ------------------------------------p : True,sef.p.count:-3.0,target:-2.9999 abs:0.00010000000000021103
+2026-07-09 11:28:18,662 Line172 [INFO] ------axis_move_handler_p-------- 4/5/0.0/False
+2026-07-09 11:28:19,666 Line978 [INFO] position move req : axis:5,reqpos:0.0
+2026-07-09 11:28:24,528 Line1350 [INFO] ------------------------------------p : True,sef.p.count:0.0,target:0.0 abs:0.0
+2026-07-09 11:28:24,674 Line206 [INFO] ------axis_move_handler_r-------- 1/5/3.0/False
+2026-07-09 11:28:25,682 Line978 [INFO] position move req : axis:4,reqpos:3.0
+2026-07-09 11:28:31,304 Line1368 [INFO] ------------------------------------r : True,sef.r.count:3.0,target:3.0031 abs:0.0030999999999998806
+2026-07-09 11:28:31,308 Line206 [INFO] ------axis_move_handler_r-------- 2/5/0.0/False
+2026-07-09 11:28:32,310 Line978 [INFO] position move req : axis:4,reqpos:0.0
+2026-07-09 11:28:37,878 Line1368 [INFO] ------------------------------------r : True,sef.r.count:0.0,target:0.0031 abs:0.0031
+2026-07-09 11:28:37,879 Line206 [INFO] ------axis_move_handler_r-------- 3/5/-3.0/False
+2026-07-09 11:28:38,882 Line978 [INFO] position move req : axis:4,reqpos:-3.0
+2026-07-09 11:28:44,456 Line1368 [INFO] ------------------------------------r : True,sef.r.count:-3.0,target:-2.9968 abs:0.0032000000000000917
+2026-07-09 11:28:44,456 Line206 [INFO] ------axis_move_handler_r-------- 4/5/0.0/False
+2026-07-09 11:28:45,457 Line978 [INFO] position move req : axis:4,reqpos:0.0
+2026-07-09 11:28:51,042 Line1368 [INFO] ------------------------------------r : True,sef.r.count:0.0,target:-0.0031 abs:0.0031
+2026-07-09 11:28:52,461 Line978 [INFO] position move req : axis:6,reqpos:96.0
+2026-07-09 11:29:08,743 Line1377 [INFO] ------------------------------------iso : True,sef.iso.count:96,target:96.0001169335868 abs:0.00011693358679565335
+2026-07-09 11:29:09,821 Line978 [INFO] position move req : axis:6,reqpos:0.0
+2026-07-09 11:29:26,070 Line1377 [INFO] ------------------------------------iso : True,sef.iso.count:0,target:0.0 abs:0.0
+2026-07-09 11:29:27,083 Line978 [INFO] position move req : axis:6,reqpos:-85.0
+2026-07-09 11:29:41,671 Line1377 [INFO] ------------------------------------iso : True,sef.iso.count:-85,target:-85.00073307843651 abs:0.0007330784365109366
+2026-07-09 11:29:42,735 Line978 [INFO] position move req : axis:6,reqpos:0.0
+2026-07-09 11:29:51,598 Line1402 [INFO] read message and one message process time is:1.7999846022576094 / 48.80002234131098
+2026-07-09 11:29:51,600 Line1403 [INFO] @@@@@@@@@ Left Cycles: 0 Current Cycle Stage - 0 @@@@@@@ x  : 81061, y : 81061, z : 81061, r : 81106,  p : 81082,  iso : 81073
+2026-07-09 11:29:57,148 Line1377 [INFO] ------------------------------------iso : True,sef.iso.count:0,target:0.0 abs:0.0
+2026-07-09 11:29:57,749 Line77 [INFO] ------axis_move_handler_x-------- 1/5/25/False
+2026-07-09 11:29:57,749 Line140 [INFO] ------axis_move_handler_z-------- 1/5/-42.0/False
+2026-07-09 11:29:57,750 Line110 [INFO] ------axis_move_handler_y-------- 1/5/1000/False
+2026-07-09 11:29:58,749 Line989 [INFO] send_single_axis_pos_move_req_x
+2026-07-09 11:29:58,750 Line978 [INFO] position move req : axis:3,reqpos:-42.0
+2026-07-09 11:29:58,750 Line978 [INFO] position move req : axis:1,reqpos:25.0
+2026-07-09 11:29:58,751 Line978 [INFO] position move req : axis:2,reqpos:100.0
+2026-07-09 11:30:04,052 Line1338 [INFO] ------------------------------------x : True,sef.x.count:2.5,target:24.9999755859375 abs:22.4999755859375
+2026-07-09 11:30:04,058 Line77 [INFO] ------axis_move_handler_x-------- 2/5/0/False
+2026-07-09 11:30:04,650 Line1344 [INFO] ------------------------------------y : True,sef.y.count:100.0,target:99.9999755859375 abs:2.4414062494315658e-05
+2026-07-09 11:30:04,658 Line110 [INFO] ------axis_move_handler_y-------- 2/5/500/False
+2026-07-09 11:30:05,059 Line989 [INFO] send_single_axis_pos_move_req_x
+2026-07-09 11:30:05,074 Line978 [INFO] position move req : axis:1,reqpos:0.0
+2026-07-09 11:30:05,658 Line978 [INFO] position move req : axis:2,reqpos:50.0
+2026-07-09 11:30:07,476 Line1359 [INFO] ------------------------------------z : True,sef.z.count:-42.0,target:-42.00003725306539,abs:3.725306539337225e-05
+2026-07-09 11:30:07,480 Line140 [INFO] ------axis_move_handler_z-------- 2/5/0.0/False
+2026-07-09 11:30:08,496 Line978 [INFO] position move req : axis:3,reqpos:0.0
+2026-07-09 11:30:10,404 Line1338 [INFO] ------------------------------------x : True,sef.x.count:0.0,target:0.0 abs:0.0
+2026-07-09 11:30:10,407 Line77 [INFO] ------axis_move_handler_x-------- 3/5/-20/False
+2026-07-09 11:30:11,415 Line989 [INFO] send_single_axis_pos_move_req_x
+2026-07-09 11:30:11,422 Line978 [INFO] position move req : axis:1,reqpos:-20.0
+2026-07-09 11:30:11,529 Line1344 [INFO] ------------------------------------y : True,sef.y.count:50.0,target:50.0 abs:0.0
+2026-07-09 11:30:11,530 Line110 [INFO] ------axis_move_handler_y-------- 3/5/0/False
+2026-07-09 11:30:12,532 Line978 [INFO] position move req : axis:2,reqpos:0.0
+2026-07-09 11:30:15,681 Line1338 [INFO] ------------------------------------x : True,sef.x.count:-2.0,target:-19.9999755859375 abs:17.9999755859375
+2026-07-09 11:30:15,691 Line77 [INFO] ------axis_move_handler_x-------- 4/5/0/False
+2026-07-09 11:30:16,702 Line989 [INFO] send_single_axis_pos_move_req_x
+2026-07-09 11:30:16,702 Line978 [INFO] position move req : axis:1,reqpos:0.0
+2026-07-09 11:30:17,206 Line1359 [INFO] ------------------------------------z : True,sef.z.count:0.0,target:2.4424906541753446e-16,abs:2.4424906541753446e-16
+2026-07-09 11:30:17,214 Line140 [INFO] ------axis_move_handler_z-------- 3/5/27.0/False
+2026-07-09 11:30:18,214 Line978 [INFO] position move req : axis:3,reqpos:27.0
+2026-07-09 11:30:18,406 Line1344 [INFO] ------------------------------------y : True,sef.y.count:0.0,target:2.44140625e-05 abs:2.44140625e-05
+2026-07-09 11:30:18,416 Line110 [INFO] ------axis_move_handler_y-------- 4/5/500/False
+2026-07-09 11:30:19,417 Line978 [INFO] position move req : axis:2,reqpos:50.0
+2026-07-09 11:30:20,932 Line1338 [INFO] ------------------------------------x : True,sef.x.count:0.0,target:0.0 abs:0.0
+2026-07-09 11:30:23,884 Line1359 [INFO] ------------------------------------z : True,sef.z.count:27.0,target:26.999957425068118,abs:4.257493188219996e-05
+2026-07-09 11:30:23,889 Line140 [INFO] ------axis_move_handler_z-------- 4/5/0.0/False
+2026-07-09 11:30:24,890 Line978 [INFO] position move req : axis:3,reqpos:0.0
+2026-07-09 11:30:24,892 Line172 [INFO] ------axis_move_handler_p-------- 1/5/3.0/False
+2026-07-09 11:30:25,209 Line1344 [INFO] ------------------------------------y : True,sef.y.count:50.0,target:50.0 abs:0.0
+2026-07-09 11:30:25,895 Line978 [INFO] position move req : axis:5,reqpos:3.0
+2026-07-09 11:30:30,559 Line1359 [INFO] ------------------------------------z : True,sef.z.count:0.0,target:2.4424906541753446e-16,abs:2.4424906541753446e-16
+2026-07-09 11:30:33,509 Line1350 [INFO] ------------------------------------p : True,sef.p.count:3.0,target:2.998 abs:0.0019999999999997797
+2026-07-09 11:30:33,519 Line172 [INFO] ------axis_move_handler_p-------- 2/5/0.0/False
+2026-07-09 11:30:34,520 Line978 [INFO] position move req : axis:5,reqpos:0.0
+2026-07-09 11:30:39,787 Line1350 [INFO] ------------------------------------p : True,sef.p.count:0.0,target:0.0 abs:0.0
+2026-07-09 11:30:39,791 Line172 [INFO] ------axis_move_handler_p-------- 3/5/-3.0/False
+2026-07-09 11:30:40,791 Line978 [INFO] position move req : axis:5,reqpos:-3.0
+2026-07-09 11:30:45,665 Line1350 [INFO] ------------------------------------p : True,sef.p.count:-3.0,target:-2.9999 abs:0.00010000000000021103
+2026-07-09 11:30:45,671 Line172 [INFO] ------axis_move_handler_p-------- 4/5/0.0/False
+2026-07-09 11:30:46,672 Line978 [INFO] position move req : axis:5,reqpos:0.0
+2026-07-09 11:30:51,514 Line1350 [INFO] ------------------------------------p : True,sef.p.count:0.0,target:0.0 abs:0.0
+2026-07-09 11:30:51,676 Line206 [INFO] ------axis_move_handler_r-------- 1/5/3.0/False
+2026-07-09 11:30:52,678 Line978 [INFO] position move req : axis:4,reqpos:3.0
+2026-07-09 11:30:58,315 Line1368 [INFO] ------------------------------------r : True,sef.r.count:3.0,target:2.9968 abs:0.0032000000000000917
+2026-07-09 11:30:58,320 Line206 [INFO] ------axis_move_handler_r-------- 2/5/0.0/False
+2026-07-09 11:30:59,322 Line978 [INFO] position move req : axis:4,reqpos:0.0
+2026-07-09 11:31:04,892 Line1368 [INFO] ------------------------------------r : True,sef.r.count:0.0,target:0.0031 abs:0.0031
+2026-07-09 11:31:04,894 Line206 [INFO] ------axis_move_handler_r-------- 3/5/-3.0/False
+2026-07-09 11:31:05,895 Line978 [INFO] position move req : axis:4,reqpos:-3.0
+2026-07-09 11:31:11,471 Line1368 [INFO] ------------------------------------r : True,sef.r.count:-3.0,target:-2.9968 abs:0.0032000000000000917
+2026-07-09 11:31:11,479 Line206 [INFO] ------axis_move_handler_r-------- 4/5/0.0/False
+2026-07-09 11:31:12,481 Line978 [INFO] position move req : axis:4,reqpos:0.0
+2026-07-09 11:31:18,050 Line1368 [INFO] ------------------------------------r : True,sef.r.count:0.0,target:-0.0031 abs:0.0031
+2026-07-09 11:31:19,486 Line978 [INFO] position move req : axis:6,reqpos:96.0
+2026-07-09 11:31:35,758 Line1377 [INFO] ------------------------------------iso : True,sef.iso.count:96,target:95.99462273585695 abs:0.0053772641430498425
+2026-07-09 11:31:36,859 Line978 [INFO] position move req : axis:6,reqpos:0.0
+2026-07-09 11:31:53,094 Line1377 [INFO] ------------------------------------iso : True,sef.iso.count:0,target:0.0 abs:0.0
+2026-07-09 11:31:54,162 Line978 [INFO] position move req : axis:6,reqpos:-85.0
+2026-07-09 11:32:08,576 Line1377 [INFO] ------------------------------------iso : True,sef.iso.count:-85,target:-84.99523888070667 abs:0.004761119293334559
+2026-07-09 11:32:09,594 Line978 [INFO] position move req : axis:6,reqpos:0.0
+2026-07-09 11:32:17,221 Line1402 [INFO] read message and one message process time is:23504.999990109354 / 118.39999933727086
+2026-07-09 11:32:17,224 Line1403 [INFO] @@@@@@@@@ Left Cycles: 0 Current Cycle Stage - 0 @@@@@@@ x  : 81060, y : 81060, z : 81060, r : 81105,  p : 81081,  iso : 81072
+2026-07-09 11:32:24,075 Line1377 [INFO] ------------------------------------iso : True,sef.iso.count:0,target:0.0 abs:0.0
+2026-07-09 11:32:24,615 Line77 [INFO] ------axis_move_handler_x-------- 1/5/25/False
+2026-07-09 11:32:24,616 Line140 [INFO] ------axis_move_handler_z-------- 1/5/-42.0/False
+2026-07-09 11:32:24,617 Line110 [INFO] ------axis_move_handler_y-------- 1/5/1000/False
+2026-07-09 11:32:25,617 Line978 [INFO] position move req : axis:3,reqpos:-42.0
+2026-07-09 11:32:25,617 Line989 [INFO] send_single_axis_pos_move_req_x
+2026-07-09 11:32:25,618 Line978 [INFO] position move req : axis:2,reqpos:100.0
+2026-07-09 11:32:25,619 Line978 [INFO] position move req : axis:1,reqpos:25.0
+2026-07-09 11:32:30,960 Line1338 [INFO] ------------------------------------x : True,sef.x.count:2.5,target:24.9999755859375 abs:22.4999755859375
+2026-07-09 11:32:30,969 Line77 [INFO] ------axis_move_handler_x-------- 2/5/0/False
+2026-07-09 11:32:31,484 Line1344 [INFO] ------------------------------------y : True,sef.y.count:100.0,target:99.9999755859375 abs:2.4414062494315658e-05
+2026-07-09 11:32:31,486 Line110 [INFO] ------axis_move_handler_y-------- 2/5/500/False
+2026-07-09 11:32:31,970 Line989 [INFO] send_single_axis_pos_move_req_x
+2026-07-09 11:32:31,973 Line978 [INFO] position move req : axis:1,reqpos:0.0
+2026-07-09 11:32:32,491 Line978 [INFO] position move req : axis:2,reqpos:50.0
+2026-07-09 11:32:34,310 Line1359 [INFO] ------------------------------------z : True,sef.z.count:-42.0,target:-42.00003725306539,abs:3.725306539337225e-05
+2026-07-09 11:32:34,314 Line140 [INFO] ------axis_move_handler_z-------- 2/5/0.0/False
+2026-07-09 11:32:35,316 Line978 [INFO] position move req : axis:3,reqpos:0.0
+2026-07-09 11:32:37,236 Line1338 [INFO] ------------------------------------x : True,sef.x.count:0.0,target:0.0 abs:0.0
+2026-07-09 11:32:37,244 Line77 [INFO] ------axis_move_handler_x-------- 3/5/-20/False
+2026-07-09 11:32:38,247 Line989 [INFO] send_single_axis_pos_move_req_x
+2026-07-09 11:32:38,248 Line978 [INFO] position move req : axis:1,reqpos:-20.0
+2026-07-09 11:32:38,362 Line1344 [INFO] ------------------------------------y : True,sef.y.count:50.0,target:50.0 abs:0.0
+2026-07-09 11:32:38,362 Line110 [INFO] ------axis_move_handler_y-------- 3/5/0/False
+2026-07-09 11:32:39,366 Line978 [INFO] position move req : axis:2,reqpos:0.0
+2026-07-09 11:32:42,513 Line1338 [INFO] ------------------------------------x : True,sef.x.count:-2.0,target:-19.9999755859375 abs:17.9999755859375
+2026-07-09 11:32:42,522 Line77 [INFO] ------axis_move_handler_x-------- 4/5/0/False
+2026-07-09 11:32:43,526 Line989 [INFO] send_single_axis_pos_move_req_x
+2026-07-09 11:32:43,529 Line978 [INFO] position move req : axis:1,reqpos:0.0
+2026-07-09 11:32:44,013 Line1359 [INFO] ------------------------------------z : True,sef.z.count:0.0,target:2.4424906541753446e-16,abs:2.4424906541753446e-16
+2026-07-09 11:32:44,016 Line140 [INFO] ------axis_move_handler_z-------- 3/5/27.0/False
+2026-07-09 11:32:45,017 Line978 [INFO] position move req : axis:3,reqpos:27.0
+2026-07-09 11:32:45,238 Line1344 [INFO] ------------------------------------y : True,sef.y.count:0.0,target:2.44140625e-05 abs:2.44140625e-05
+2026-07-09 11:32:45,240 Line110 [INFO] ------axis_move_handler_y-------- 4/5/500/False
+2026-07-09 11:32:46,243 Line978 [INFO] position move req : axis:2,reqpos:50.0
+2026-07-09 11:32:47,766 Line1338 [INFO] ------------------------------------x : True,sef.x.count:0.0,target:0.0 abs:0.0
+2026-07-09 11:32:50,714 Line1359 [INFO] ------------------------------------z : True,sef.z.count:27.0,target:26.999957425068118,abs:4.257493188219996e-05
+2026-07-09 11:32:50,718 Line140 [INFO] ------axis_move_handler_z-------- 4/5/0.0/False
+2026-07-09 11:32:51,721 Line978 [INFO] position move req : axis:3,reqpos:0.0
+2026-07-09 11:32:51,736 Line172 [INFO] ------axis_move_handler_p-------- 1/5/3.0/False
+2026-07-09 11:32:52,015 Line1344 [INFO] ------------------------------------y : True,sef.y.count:50.0,target:50.0 abs:0.0
+2026-07-09 11:32:52,738 Line978 [INFO] position move req : axis:5,reqpos:3.0
+2026-07-09 11:32:57,391 Line1359 [INFO] ------------------------------------z : True,sef.z.count:0.0,target:2.4424906541753446e-16,abs:2.4424906541753446e-16
+2026-07-09 11:33:00,316 Line1350 [INFO] ------------------------------------p : True,sef.p.count:3.0,target:2.998 abs:0.0019999999999997797
+2026-07-09 11:33:00,320 Line172 [INFO] ------axis_move_handler_p-------- 2/5/0.0/False
+2026-07-09 11:33:01,322 Line978 [INFO] position move req : axis:5,reqpos:0.0
+2026-07-09 11:33:06,593 Line1350 [INFO] ------------------------------------p : True,sef.p.count:0.0,target:0.0 abs:0.0
+2026-07-09 11:33:06,596 Line172 [INFO] ------axis_move_handler_p-------- 3/5/-3.0/False
+2026-07-09 11:33:07,598 Line978 [INFO] position move req : axis:5,reqpos:-3.0
+2026-07-09 11:33:12,567 Line1350 [INFO] ------------------------------------p : True,sef.p.count:-3.0,target:-2.9999 abs:0.00010000000000021103
+2026-07-09 11:33:12,574 Line172 [INFO] ------axis_move_handler_p-------- 4/5/0.0/False
+2026-07-09 11:33:13,576 Line978 [INFO] position move req : axis:5,reqpos:0.0
+2026-07-09 11:33:18,545 Line1350 [INFO] ------------------------------------p : True,sef.p.count:0.0,target:0.0 abs:0.0
+2026-07-09 11:33:18,588 Line206 [INFO] ------axis_move_handler_r-------- 1/5/3.0/False
+2026-07-09 11:33:19,591 Line978 [INFO] position move req : axis:4,reqpos:3.0
+2026-07-09 11:33:25,220 Line1368 [INFO] ------------------------------------r : True,sef.r.count:3.0,target:2.9968 abs:0.0032000000000000917
+2026-07-09 11:33:25,230 Line206 [INFO] ------axis_move_handler_r-------- 2/5/0.0/False
+2026-07-09 11:33:26,235 Line978 [INFO] position move req : axis:4,reqpos:0.0
+2026-07-09 11:33:31,799 Line1368 [INFO] ------------------------------------r : True,sef.r.count:0.0,target:0.0031 abs:0.0031
+2026-07-09 11:33:31,810 Line206 [INFO] ------axis_move_handler_r-------- 3/5/-3.0/False
+2026-07-09 11:33:32,812 Line978 [INFO] position move req : axis:4,reqpos:-3.0
+2026-07-09 11:33:38,403 Line1368 [INFO] ------------------------------------r : True,sef.r.count:-3.0,target:-2.9968 abs:0.0032000000000000917
+2026-07-09 11:33:38,409 Line206 [INFO] ------axis_move_handler_r-------- 4/5/0.0/False
+2026-07-09 11:33:39,414 Line978 [INFO] position move req : axis:4,reqpos:0.0
+2026-07-09 11:33:44,973 Line1368 [INFO] ------------------------------------r : True,sef.r.count:0.0,target:-0.0031 abs:0.0031
+2026-07-09 11:33:46,435 Line978 [INFO] position move req : axis:6,reqpos:96.0
+2026-07-09 11:34:02,705 Line1377 [INFO] ------------------------------------iso : True,sef.iso.count:96,target:95.99462273585695 abs:0.0053772641430498425
+2026-07-09 11:34:03,805 Line978 [INFO] position move req : axis:6,reqpos:0.0
+2026-07-09 11:34:20,114 Line1377 [INFO] ------------------------------------iso : True,sef.iso.count:0,target:0.0 abs:0.0
+2026-07-09 11:34:21,190 Line978 [INFO] position move req : axis:6,reqpos:-85.0
+2026-07-09 11:34:35,616 Line1377 [INFO] ------------------------------------iso : True,sef.iso.count:-85,target:-84.99523888070667 abs:0.004761119293334559
+2026-07-09 11:34:36,641 Line978 [INFO] position move req : axis:6,reqpos:0.0
+2026-07-09 11:34:40,060 Line1402 [INFO] read message and one message process time is:24784.000008367002 / 885.4999905452132
+2026-07-09 11:34:40,061 Line1403 [INFO] @@@@@@@@@ Left Cycles: 0 Current Cycle Stage - 0 @@@@@@@ x  : 81059, y : 81059, z : 81059, r : 81104,  p : 81080,  iso : 81071
+2026-07-09 11:34:51,098 Line1377 [INFO] ------------------------------------iso : True,sef.iso.count:0,target:0.0 abs:0.0
+2026-07-09 11:34:51,672 Line140 [INFO] ------axis_move_handler_z-------- 1/5/-42.0/False
+2026-07-09 11:34:51,673 Line110 [INFO] ------axis_move_handler_y-------- 1/5/1000/False
+2026-07-09 11:34:51,674 Line77 [INFO] ------axis_move_handler_x-------- 1/5/25/False
+2026-07-09 11:34:52,677 Line978 [INFO] position move req : axis:3,reqpos:-42.0
+2026-07-09 11:34:52,679 Line978 [INFO] position move req : axis:2,reqpos:100.0
+2026-07-09 11:34:52,680 Line989 [INFO] send_single_axis_pos_move_req_x
+2026-07-09 11:34:52,684 Line978 [INFO] position move req : axis:1,reqpos:25.0
+2026-07-09 11:34:58,082 Line1338 [INFO] ------------------------------------x : True,sef.x.count:2.5,target:24.9999755859375 abs:22.4999755859375
+2026-07-09 11:34:58,089 Line77 [INFO] ------axis_move_handler_x-------- 2/5/0/False
+2026-07-09 11:34:58,574 Line1344 [INFO] ------------------------------------y : True,sef.y.count:100.0,target:99.9999755859375 abs:2.4414062494315658e-05
+2026-07-09 11:34:58,582 Line110 [INFO] ------axis_move_handler_y-------- 2/5/500/False
+2026-07-09 11:34:59,094 Line989 [INFO] send_single_axis_pos_move_req_x
+2026-07-09 11:34:59,096 Line978 [INFO] position move req : axis:1,reqpos:0.0
+2026-07-09 11:34:59,584 Line978 [INFO] position move req : axis:2,reqpos:50.0
+2026-07-09 11:35:01,424 Line1359 [INFO] ------------------------------------z : True,sef.z.count:-42.0,target:-41.999904206403265,abs:9.579359673494992e-05
+2026-07-09 11:35:01,425 Line140 [INFO] ------axis_move_handler_z-------- 2/5/0.0/False
+2026-07-09 11:35:02,429 Line978 [INFO] position move req : axis:3,reqpos:0.0
+2026-07-09 11:35:04,350 Line1338 [INFO] ------------------------------------x : True,sef.x.count:0.0,target:0.0 abs:0.0
+2026-07-09 11:35:04,355 Line77 [INFO] ------axis_move_handler_x-------- 3/5/-20/False
+2026-07-09 11:35:05,357 Line989 [INFO] send_single_axis_pos_move_req_x
+2026-07-09 11:35:05,360 Line978 [INFO] position move req : axis:1,reqpos:-20.0
+2026-07-09 11:35:05,375 Line1344 [INFO] ------------------------------------y : True,sef.y.count:50.0,target:50.0 abs:0.0
+2026-07-09 11:35:05,382 Line110 [INFO] ------axis_move_handler_y-------- 3/5/0/False
+2026-07-09 11:35:06,385 Line978 [INFO] position move req : axis:2,reqpos:0.0
+2026-07-09 11:35:09,628 Line1338 [INFO] ------------------------------------x : True,sef.x.count:-2.0,target:-19.9999755859375 abs:17.9999755859375
+2026-07-09 11:35:09,638 Line77 [INFO] ------axis_move_handler_x-------- 4/5/0/False
+2026-07-09 11:35:10,641 Line989 [INFO] send_single_axis_pos_move_req_x
+2026-07-09 11:35:10,646 Line978 [INFO] position move req : axis:1,reqpos:0.0
+2026-07-09 11:35:11,127 Line1359 [INFO] ------------------------------------z : True,sef.z.count:0.0,target:-0.00013304666212509697,abs:0.00013304666212509697
+2026-07-09 11:35:11,131 Line140 [INFO] ------axis_move_handler_z-------- 3/5/27.0/False
+2026-07-09 11:35:12,134 Line978 [INFO] position move req : axis:3,reqpos:27.0
+2026-07-09 11:35:12,251 Line1344 [INFO] ------------------------------------y : True,sef.y.count:0.0,target:2.44140625e-05 abs:2.44140625e-05
+2026-07-09 11:35:12,251 Line110 [INFO] ------axis_move_handler_y-------- 4/5/500/False
+2026-07-09 11:35:13,257 Line978 [INFO] position move req : axis:2,reqpos:50.0
+2026-07-09 11:35:14,972 Line1338 [INFO] ------------------------------------x : True,sef.x.count:0.0,target:0.0 abs:0.0
+2026-07-09 11:35:17,828 Line1359 [INFO] ------------------------------------z : True,sef.z.count:27.0,target:27.000090471730243,abs:9.047173024256949e-05
+2026-07-09 11:35:17,835 Line140 [INFO] ------axis_move_handler_z-------- 4/5/0.0/False
+2026-07-09 11:35:18,837 Line978 [INFO] position move req : axis:3,reqpos:0.0
+2026-07-09 11:35:18,848 Line172 [INFO] ------axis_move_handler_p-------- 1/5/3.0/False
+2026-07-09 11:35:19,125 Line1344 [INFO] ------------------------------------y : True,sef.y.count:50.0,target:50.0 abs:0.0
+2026-07-09 11:35:19,851 Line978 [INFO] position move req : axis:5,reqpos:3.0
+2026-07-09 11:35:24,503 Line1359 [INFO] ------------------------------------z : True,sef.z.count:0.0,target:2.4424906541753446e-16,abs:2.4424906541753446e-16
+2026-07-09 11:35:27,428 Line1350 [INFO] ------------------------------------p : True,sef.p.count:3.0,target:2.998 abs:0.0019999999999997797
+2026-07-09 11:35:27,434 Line172 [INFO] ------axis_move_handler_p-------- 2/5/0.0/False
+2026-07-09 11:35:28,437 Line978 [INFO] position move req : axis:5,reqpos:0.0
+2026-07-09 11:35:33,707 Line1350 [INFO] ------------------------------------p : True,sef.p.count:0.0,target:0.0 abs:0.0
+2026-07-09 11:35:33,707 Line172 [INFO] ------axis_move_handler_p-------- 3/5/-3.0/False
+2026-07-09 11:35:34,714 Line978 [INFO] position move req : axis:5,reqpos:-3.0
+2026-07-09 11:35:39,590 Line1350 [INFO] ------------------------------------p : True,sef.p.count:-3.0,target:-2.9999 abs:0.00010000000000021103
+2026-07-09 11:35:39,600 Line172 [INFO] ------axis_move_handler_p-------- 4/5/0.0/False
+2026-07-09 11:35:40,602 Line978 [INFO] position move req : axis:5,reqpos:0.0
+2026-07-09 11:35:45,463 Line1350 [INFO] ------------------------------------p : True,sef.p.count:0.0,target:0.0 abs:0.0
+2026-07-09 11:35:45,615 Line206 [INFO] ------axis_move_handler_r-------- 1/5/3.0/False
+2026-07-09 11:35:46,619 Line978 [INFO] position move req : axis:4,reqpos:3.0
+2026-07-09 11:35:52,241 Line1368 [INFO] ------------------------------------r : True,sef.r.count:3.0,target:2.9968 abs:0.0032000000000000917
+2026-07-09 11:35:52,243 Line206 [INFO] ------axis_move_handler_r-------- 2/5/0.0/False
+2026-07-09 11:35:53,246 Line978 [INFO] position move req : axis:4,reqpos:0.0
+2026-07-09 11:35:58,815 Line1368 [INFO] ------------------------------------r : True,sef.r.count:0.0,target:0.0031 abs:0.0031
+2026-07-09 11:35:58,818 Line206 [INFO] ------axis_move_handler_r-------- 3/5/-3.0/False
+2026-07-09 11:35:59,823 Line978 [INFO] position move req : axis:4,reqpos:-3.0
+2026-07-09 11:36:05,392 Line1368 [INFO] ------------------------------------r : True,sef.r.count:-3.0,target:-2.9968 abs:0.0032000000000000917
+2026-07-09 11:36:05,394 Line206 [INFO] ------axis_move_handler_r-------- 4/5/0.0/False
+2026-07-09 11:36:06,397 Line978 [INFO] position move req : axis:4,reqpos:0.0
+2026-07-09 11:36:11,971 Line1368 [INFO] ------------------------------------r : True,sef.r.count:0.0,target:-0.0031 abs:0.0031
+2026-07-09 11:36:13,415 Line978 [INFO] position move req : axis:6,reqpos:96.0
+2026-07-09 11:36:29,700 Line1377 [INFO] ------------------------------------iso : True,sef.iso.count:96,target:95.99462273585695 abs:0.0053772641430498425
+2026-07-09 11:36:30,735 Line978 [INFO] position move req : axis:6,reqpos:0.0
+2026-07-09 11:36:47,008 Line1377 [INFO] ------------------------------------iso : True,sef.iso.count:0,target:0.0 abs:0.0
+2026-07-09 11:36:48,031 Line978 [INFO] position move req : axis:6,reqpos:-85.0
+2026-07-09 11:37:02,486 Line1377 [INFO] ------------------------------------iso : True,sef.iso.count:-85,target:-84.99523888070667 abs:0.004761119293334559
+2026-07-09 11:37:03,009 Line1402 [INFO] read message and one message process time is:44.7999918833375 / 329.6999784652144
+2026-07-09 11:37:03,010 Line1403 [INFO] @@@@@@@@@ Left Cycles: 0 Current Cycle Stage - 0 @@@@@@@ x  : 81058, y : 81058, z : 81058, r : 81103,  p : 81079,  iso : 81070
+2026-07-09 11:37:03,577 Line978 [INFO] position move req : axis:6,reqpos:0.0
+2026-07-09 11:37:17,992 Line1377 [INFO] ------------------------------------iso : True,sef.iso.count:0,target:0.0 abs:0.0
+2026-07-09 11:37:18,614 Line140 [INFO] ------axis_move_handler_z-------- 1/5/-42.0/False
+2026-07-09 11:37:18,615 Line77 [INFO] ------axis_move_handler_x-------- 1/5/25/False
+2026-07-09 11:37:18,616 Line110 [INFO] ------axis_move_handler_y-------- 1/5/1000/False
+2026-07-09 11:37:19,617 Line978 [INFO] position move req : axis:3,reqpos:-42.0
+2026-07-09 11:37:19,619 Line989 [INFO] send_single_axis_pos_move_req_x
+2026-07-09 11:37:19,620 Line978 [INFO] position move req : axis:2,reqpos:100.0
+2026-07-09 11:37:19,625 Line978 [INFO] position move req : axis:1,reqpos:25.0
+2026-07-09 11:39:26,311 Line1402 [INFO] read message and one message process time is:48215.39999102242 / 127.30000889860094
+2026-07-09 11:39:26,313 Line1403 [INFO] @@@@@@@@@ Left Cycles: 0 Current Cycle Stage - 0 @@@@@@@ x  : 81058, y : 81058, z : 81058, r : 81103,  p : 81079,  iso : 81069
+2026-07-09 11:41:49,867 Line1402 [INFO] read message and one message process time is:18.200022168457508 / 645.8000279963017
+2026-07-09 11:41:49,869 Line1403 [INFO] @@@@@@@@@ Left Cycles: 0 Current Cycle Stage - 0 @@@@@@@ x  : 81058, y : 81058, z : 81058, r : 81103,  p : 81079,  iso : 81069
+2026-07-09 11:44:13,364 Line1402 [INFO] read message and one message process time is:23463.199991965666 / 136.5999924018979
+2026-07-09 11:44:13,365 Line1403 [INFO] @@@@@@@@@ Left Cycles: 0 Current Cycle Stage - 0 @@@@@@@ x  : 81058, y : 81058, z : 81058, r : 81103,  p : 81079,  iso : 81069
+2026-07-09 11:46:36,926 Line1402 [INFO] read message and one message process time is:15.900004655122757 / 287.7000079024583
+2026-07-09 11:46:36,932 Line1403 [INFO] @@@@@@@@@ Left Cycles: 0 Current Cycle Stage - 0 @@@@@@@ x  : 81058, y : 81058, z : 81058, r : 81103,  p : 81079,  iso : 81069
+2026-07-09 11:49:00,508 Line1402 [INFO] read message and one message process time is:47.00000863522291 / 222.99998090602458
+2026-07-09 11:49:00,509 Line1403 [INFO] @@@@@@@@@ Left Cycles: 0 Current Cycle Stage - 0 @@@@@@@ x  : 81058, y : 81058, z : 81058, r : 81103,  p : 81079,  iso : 81069
+2026-07-09 11:51:23,985 Line1402 [INFO] read message and one message process time is:23.699976736679673 / 208.30001449212432
+2026-07-09 11:51:23,987 Line1403 [INFO] @@@@@@@@@ Left Cycles: 0 Current Cycle Stage - 0 @@@@@@@ x  : 81058, y : 81058, z : 81058, r : 81103,  p : 81079,  iso : 81069
+2026-07-09 11:53:47,504 Line1402 [INFO] read message and one message process time is:48954.80000413954 / 215.80001339316368
+2026-07-09 11:53:47,506 Line1403 [INFO] @@@@@@@@@ Left Cycles: 0 Current Cycle Stage - 0 @@@@@@@ x  : 81058, y : 81058, z : 81058, r : 81103,  p : 81079,  iso : 81069
+2026-07-09 11:56:11,052 Line1402 [INFO] read message and one message process time is:29.099988751113415 / 532.3000077623874
+2026-07-09 11:56:11,053 Line1403 [INFO] @@@@@@@@@ Left Cycles: 0 Current Cycle Stage - 0 @@@@@@@ x  : 81058, y : 81058, z : 81058, r : 81103,  p : 81079,  iso : 81069
+2026-07-09 11:58:34,623 Line1402 [INFO] read message and one message process time is:74977.59998659603 / 851.3999928254634
+2026-07-09 11:58:34,625 Line1403 [INFO] @@@@@@@@@ Left Cycles: 0 Current Cycle Stage - 0 @@@@@@@ x  : 81058, y : 81058, z : 81058, r : 81103,  p : 81079,  iso : 81069
+2026-07-09 12:00:57,946 Line1402 [INFO] read message and one message process time is:24.00000812485814 / 271.6000017244369
+2026-07-09 12:00:57,947 Line1403 [INFO] @@@@@@@@@ Left Cycles: 0 Current Cycle Stage - 0 @@@@@@@ x  : 81058, y : 81058, z : 81058, r : 81103,  p : 81079,  iso : 81069
+2026-07-09 12:03:21,336 Line1402 [INFO] read message and one message process time is:22277.09998260252 / 123.60000982880592
+2026-07-09 12:03:21,338 Line1403 [INFO] @@@@@@@@@ Left Cycles: 0 Current Cycle Stage - 0 @@@@@@@ x  : 81058, y : 81058, z : 81058, r : 81103,  p : 81079,  iso : 81069
+2026-07-09 12:05:44,936 Line1402 [INFO] read message and one message process time is:49262.79999199323 / 351.9000019878149
+2026-07-09 12:05:44,939 Line1403 [INFO] @@@@@@@@@ Left Cycles: 0 Current Cycle Stage - 0 @@@@@@@ x  : 81058, y : 81058, z : 81058, r : 81103,  p : 81079,  iso : 81069
+2026-07-09 12:08:08,513 Line1402 [INFO] read message and one message process time is:98055.70001481101 / 837.3000018764287
+2026-07-09 12:08:08,514 Line1403 [INFO] @@@@@@@@@ Left Cycles: 0 Current Cycle Stage - 0 @@@@@@@ x  : 81058, y : 81058, z : 81058, r : 81103,  p : 81079,  iso : 81069
+2026-07-09 12:10:31,999 Line1402 [INFO] read message and one message process time is:102.59999544359744 / 298.6000035889447
+2026-07-09 12:10:32,000 Line1403 [INFO] @@@@@@@@@ Left Cycles: 0 Current Cycle Stage - 0 @@@@@@@ x  : 81058, y : 81058, z : 81058, r : 81103,  p : 81079,  iso : 81069
+2026-07-09 12:12:55,672 Line1402 [INFO] read message and one message process time is:98561.99999921955 / 137.99997395835817
+2026-07-09 12:12:55,675 Line1403 [INFO] @@@@@@@@@ Left Cycles: 0 Current Cycle Stage - 0 @@@@@@@ x  : 81058, y : 81058, z : 81058, r : 81103,  p : 81079,  iso : 81069
+2026-07-09 12:15:19,145 Line1402 [INFO] read message and one message process time is:33.29999162815511 / 244.3999983370304
+2026-07-09 12:15:19,146 Line1403 [INFO] @@@@@@@@@ Left Cycles: 0 Current Cycle Stage - 0 @@@@@@@ x  : 81058, y : 81058, z : 81058, r : 81103,  p : 81079,  iso : 81069
+2026-07-09 12:17:42,649 Line1402 [INFO] read message and one message process time is:23728.500003926456 / 226.50000755675137
+2026-07-09 12:17:42,651 Line1403 [INFO] @@@@@@@@@ Left Cycles: 0 Current Cycle Stage - 0 @@@@@@@ x  : 81058, y : 81058, z : 81058, r : 81103,  p : 81079,  iso : 81069
+2026-07-09 12:20:06,206 Line1402 [INFO] read message and one message process time is:14.499993994832039 / 356.4000071492046
+2026-07-09 12:20:06,208 Line1403 [INFO] @@@@@@@@@ Left Cycles: 0 Current Cycle Stage - 0 @@@@@@@ x  : 81058, y : 81058, z : 81058, r : 81103,  p : 81079,  iso : 81069
+2026-07-09 12:22:29,781 Line1402 [INFO] read message and one message process time is:21.69999061152339 / 212.2999867424369
+2026-07-09 12:22:29,783 Line1403 [INFO] @@@@@@@@@ Left Cycles: 0 Current Cycle Stage - 0 @@@@@@@ x  : 81058, y : 81058, z : 81058, r : 81103,  p : 81079,  iso : 81069
+2026-07-09 12:24:53,248 Line1402 [INFO] read message and one message process time is:29.399991035461426 / 205.99999697878957
+2026-07-09 12:24:53,251 Line1403 [INFO] @@@@@@@@@ Left Cycles: 0 Current Cycle Stage - 0 @@@@@@@ x  : 81058, y : 81058, z : 81058, r : 81103,  p : 81079,  iso : 81069
+2026-07-09 12:27:16,800 Line1402 [INFO] read message and one message process time is:17.900019884109497 / 378.19999852217734
+2026-07-09 12:27:16,802 Line1403 [INFO] @@@@@@@@@ Left Cycles: 0 Current Cycle Stage - 0 @@@@@@@ x  : 81058, y : 81058, z : 81058, r : 81103,  p : 81079,  iso : 81069
+2026-07-09 12:29:40,359 Line1402 [INFO] read message and one message process time is:17.000013031065464 / 60.399994254112244
+2026-07-09 12:29:40,361 Line1403 [INFO] @@@@@@@@@ Left Cycles: 0 Current Cycle Stage - 0 @@@@@@@ x  : 81058, y : 81058, z : 81058, r : 81103,  p : 81079,  iso : 81069
+2026-07-09 12:32:03,836 Line1402 [INFO] read message and one message process time is:14.599994756281376 / 296.4999875985086
+2026-07-09 12:32:03,839 Line1403 [INFO] @@@@@@@@@ Left Cycles: 0 Current Cycle Stage - 0 @@@@@@@ x  : 81058, y : 81058, z : 81058, r : 81103,  p : 81079,  iso : 81069
+2026-07-09 12:34:27,436 Line1402 [INFO] read message and one message process time is:50099.89999234676 / 871.6000011190772
+2026-07-09 12:34:27,438 Line1403 [INFO] @@@@@@@@@ Left Cycles: 0 Current Cycle Stage - 0 @@@@@@@ x  : 81058, y : 81058, z : 81058, r : 81103,  p : 81079,  iso : 81069
+2026-07-09 12:36:51,005 Line1402 [INFO] read message and one message process time is:24950.29999408871 / 1044.0999758429825
+2026-07-09 12:36:51,009 Line1403 [INFO] @@@@@@@@@ Left Cycles: 0 Current Cycle Stage - 0 @@@@@@@ x  : 81058, y : 81058, z : 81058, r : 81103,  p : 81079,  iso : 81069
+2026-07-09 13:08:50,644 Line63 [INFO] Connecting to 192.168.150.9:6662...
+2026-07-09 13:08:50,646 Line66 [INFO] Connected
+2026-07-09 13:08:50,679 Line21 [INFO] axis : p,x,y,z,r,iso
+2026-07-09 13:08:50,686 Line820 [INFO] send_associate_req : association_id: 1
+sequence_num_bi: 1
+assoc_req {
+  version: "1.0.0.74"
+}
+
+2026-07-09 13:10:58,106 Line63 [INFO] Connecting to 192.168.150.9:6662...
+2026-07-09 13:10:58,108 Line66 [INFO] Connected
+2026-07-09 13:10:58,140 Line21 [INFO] axis : p,x,y,z,r,iso
+2026-07-09 13:10:58,147 Line820 [INFO] send_associate_req : association_id: 1
+sequence_num_bi: 1
+assoc_req {
+  version: "1.0.0.74"
+}
+

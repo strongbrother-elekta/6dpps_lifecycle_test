@@ -1,0 +1,99 @@
+// $Header: http://gbcsvalm01.int.elekta.com:49158/svn/6D_PPS/PPS_Protocol/tags/PPS_Protocol_1.0.0.36/proto/tblctl.proto 735 2022-11-18 00:43:53Z htiae07877 $
+syntax = "proto3";
+import "util.proto";
+package TblCtlProto;
+
+message IntegrityModeInd
+{
+  Util.IntegrityMode mode = 1;
+}
+message FaultOverrideReq {
+  repeated Util.Error errors = 1;
+}
+message FaultResetReq {
+  repeated Util.Error errors = 1;
+}
+message StartMoveToSetpointReq {
+  repeated Util.Axis axes = 1;
+}
+message AxisSpeed {
+  Util.AxisIndex axis  = 1;
+  Util.Direction dir   = 2;
+  uint32         speed = 3;
+}
+message StartMoveToEndPositionReq {
+  repeated AxisSpeed axes = 1;
+}
+message StopMoveReq {
+  repeated Util.AxisIndex axes = 1;
+}
+message ShiftCorrectionReq {
+  int32 shift_lateral = 1;
+  int32 shift_longitudinal = 2;
+  int32 shift_vertical = 3;
+  int32 shift_pitch = 4;
+  int32 shift_roll = 5;
+  int32 shift_iso = 6;
+}
+message Iec61217AsuReq {
+  int32 pos_lateral = 1;
+  int32 pos_longitudinal = 2;
+  int32 pos_vertical = 3;
+  int32 pos_pitch = 4;
+  int32 pos_roll = 5;
+  int32 pos_iso = 6;
+}
+
+message IntegrityModeRep
+{
+  Util.ReplyStatus status = 1;
+}
+message FaultOverrideRep {
+  Util.ReplyStatus status = 1;
+}
+message FaultResetRep {
+  Util.ReplyStatus status = 1;
+}
+message StartMoveToSetpointRep {
+  Util.ReplyStatus status = 1;
+}
+message StartMoveToEndPositionRep {
+  Util.ReplyStatus status = 1;
+}
+message StopMoveRep {
+  Util.ReplyStatus status = 1;
+}
+message ShiftCorrectionRep {
+  Util.ReplyStatus status = 1;
+}
+message Iec61217AsuRep {
+  Util.ReplyStatus status = 1;
+}
+
+message ServerRx {
+  oneof Msg {
+    FaultResetReq             fault_reset_req         = 1;
+    StartMoveToSetpointReq    start_move_setpoint_req = 2;
+    StartMoveToEndPositionReq start_move_endpos_req   = 3;
+    StopMoveReq               stop_move_req           = 4;
+    IntegrityModeInd          integrity_mode_ind      = 5;
+    FaultOverrideReq          fault_override_req      = 6;
+    ShiftCorrectionReq        shift_correction_req    = 7;
+    Iec61217AsuReq            iec61217_asu_req        = 8;
+  }
+}
+
+message ServerTx {
+  oneof Msg {
+    FaultResetRep             fault_reset_rep         = 1;
+    StartMoveToSetpointRep    start_move_setpoint_rep = 2;
+    StartMoveToEndPositionRep start_move_endpos_rep   = 3;
+    StopMoveRep               stop_move_rep           = 4;
+    Util.FaultPush            fault_push              = 5;
+    Util.TblStatusPush        table_stat_push         = 6;
+    IntegrityModeRep          integrity_mode_rep      = 7;
+    FaultOverrideRep          fault_override_rep      = 8;
+    ShiftCorrectionRep        shift_correction_rep    = 9;
+    Iec61217AsuRep            iec61217_asu_rep        = 10;
+  }
+}

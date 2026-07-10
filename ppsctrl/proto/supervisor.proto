@@ -1,0 +1,184 @@
+syntax = "proto3";
+import "util.proto";
+package SupervisorAlgorithmProto;
+//use a new structure of proto
+
+//======================Convertor
+message ConvertorBase {
+	bool is_primary =1;
+	double value = 2;
+	double tablecontrol_result = 3;
+}
+
+message ConvertorLinear {
+	Util.AxisIndex axis = 1;
+	ConvertorBase convertor_base = 2;
+}
+message ConvertorPitch {
+	double z_screw_height = 1;
+	ConvertorBase convertor_base = 2;
+}
+message ConvertorRoll {
+	ConvertorBase convertor_base = 1;
+}
+
+message Sensor2Position{
+	oneof AxisConvertor{
+	  ConvertorLinear convertor_linear = 1;
+	  ConvertorPitch convertor_pitch = 2;
+	  ConvertorRoll convertor_roll = 3;
+	}
+}
+
+message Position2Sensor{
+	oneof AxisConvertor{
+	  ConvertorLinear convertor_linear = 1;
+	  ConvertorPitch convertor_pitch = 2;
+	  ConvertorRoll convertor_roll = 3;
+	}
+}
+
+
+//================result
+message Sensor2PositionResult{
+	Util.AxisIndex axis = 1;
+	double result = 2;
+	bool is_primary = 3;
+	double tablectrl_result = 4;
+}
+
+message Position2SensorResult{
+	Util.AxisIndex axis = 1;
+	double result = 2;
+	bool is_primary = 3;
+	double tablectrl_result = 4;
+}
+
+////======================calibration
+message SampleValue{
+	double length =1;
+	double angle = 2;
+}
+
+message CalibrationSamples {
+	repeated SampleValue samples = 1;
+	int32 samples_number = 2;
+}
+		
+message CalibrationLinear {
+	Util.AxisIndex axis = 1;
+	bool is_primary = 2;
+	CalibrationSamples calibration_samples = 3;
+	repeated double table_result = 4;
+}
+
+message CalibrationPitch {
+	double z_screw_height = 1;
+	CalibrationSamples  calibration_samples = 2;
+	repeated double table_result = 3;
+}
+
+message CalibrationRoll {
+	CalibrationSamples  calibration_samples = 1;
+	repeated double table_result = 2;
+}
+
+message Calibration {
+	oneof AxisCalibration {
+	  CalibrationLinear calibration_linear = 1;
+	  CalibrationPitch calibration_pitch = 2;
+	  CalibrationRoll calibration_roll = 3;
+	}
+}
+
+//================result
+message CalibrationResult {
+	Util.AxisIndex axis = 1;
+	bool is_primary = 2;
+	int32 parameter_num = 3;
+	repeated double table_result= 4;
+	repeated double result= 5;
+}
+
+
+////======================transformation
+message Point {
+	repeated double axis_value = 1;//x,y,z,pitch,roll,column,iso
+}
+
+message Transformation {
+	Point start_point = 1;
+	Point end_point = 2;
+	bool is_iso_based = 3;
+	repeated double tablectrl_result = 4;//lateral, longitude, vertical
+}
+
+//==================result
+
+message TransformationResult {
+	bool is_iso_based = 1;
+	repeated double supervisor_result = 2;
+	repeated double tablectrl_result = 3;
+}
+////======================Correction shift
+
+message CorrectionMatrix {
+	repeated double matrix_value = 1;
+}
+
+message CorrectionShift {
+	CorrectionMatrix matrix = 1;
+	Point current = 2;
+	Point target = 3;
+	Point tablectrl_result = 4;
+}
+
+message CorrectionShiftResult {
+	Point tablectrl_result = 1;
+	Point supervisor_result = 2;
+}
+
+//=======================Reload
+message SupervisorCalFinishedInfo{
+	Util.AxisIndex axis = 1;
+	bool is_primary = 2;
+}
+
+message ReloadAfterCalibration{
+	Util.AxisIndex axis = 1;
+	bool is_primary = 2;
+}
+
+message ReloadXML {
+	optional Util.AxisIndex axis = 1;
+	optional bool is_primary = 2;
+}
+
+//========================Receive
+message ServerTx {
+	//used for receiving message from tableCtrl;
+	uint32 algorithm_id = 1;
+	oneof Msg {
+		Sensor2Position sensor_position_info = 2; 
+		Position2Sensor position_sensor_info = 3;
+		Calibration calibration_info = 4;
+		Transformation transformation_info = 5;
+		CorrectionShift correction_shift_info = 6;
+		ReloadXML reload_xml = 7;
+		ReloadAfterCalibration reload_after_calibration = 8;
+	}
+}
+	
+//========================Send
+message ServerRx {
+	//used for pushing message to tablectrl;
+	uint32 algorithm_id = 1;
+	oneof Msg {
+		Sensor2PositionResult sensor_position_result = 2;
+		Position2SensorResult position_sensor_result = 3;
+		CalibrationResult calibration_result = 4;
+		TransformationResult transformation_result = 5;
+		CorrectionShiftResult correction_shift_result = 6;
+		SupervisorCalFinishedInfo supervisor_cal_finished_info = 7;
+	}
+}

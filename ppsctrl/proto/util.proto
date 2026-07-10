@@ -1,0 +1,314 @@
+// $Header: http://gbcsvalm01.int.elekta.com:49158/svn/6D_PPS/PPS_Protocol/tags/PPS_Protocol_1.0.0.36/proto/util.proto 1161 2023-03-16 08:39:59Z xzhae10011 $
+syntax = "proto3";
+package Util;
+
+enum AxisIndex {
+  UNDEF_AXIS   = 0;
+  LATERAL      = 1;
+  LONGITUDINAL = 2;
+  VERTICAL     = 3;
+  ROLL         = 4;
+  PITCH        = 5;
+  ISO          = 6;
+  COLUMN       = 7;
+  INCLINOMETER = 8;
+}
+enum ReplyStatus {
+  UNDEF                           = 0;
+  OK                              = 1;
+  // Errors:
+  ATTRIBUTE_ERR                   = 2;
+  STATE_ERR                       = 3;
+  AXIS_MOVE_POSITION_OUT_OF_RANGE = 4;
+  AXIS_MOVE_SPEED_OF_RANGE        = 5;
+  INVALID_AXIS                    = 6;
+  INVALID_COMPONENT_ID            = 7;
+  INVALID_LOCAL_FAULT_ID          = 8;
+  INVALID_ERROR_CODE_PREFIX_A     = 9;
+  INVALID_ERROR_CODE_PREFIX_B     = 10;
+  INVALID_ERROR_CODE_PREFIX_C     = 11;
+  INVALID_ERROR_CODE_PREFIX       = 12;
+}
+enum Direction {
+  UNDEF_DIRECTION = 0;
+  POSITIVE_DIR    = 1;
+  NEGATIV_DIR     = 2;
+}
+enum IntegrityMode
+{
+  UNDEF_MODE    = 0;
+  CLINICAL_MODE = 1;
+  SERVICE_MODE  = 2;
+}
+enum ErrorCodePrefixA
+{
+  ECPA_GENERAL        = 0;
+  ECPA_SERVO          = 1;
+  ECPA_2ND_POS_SENSOR = 2;
+  ECPA_EXT_POS_SENSOR = 3;
+}
+enum ErrorCodePrefixB
+{
+  ECPB_AXIS_ALL       = 0;
+  ECPB_LATERAL        = 1;
+  ECPB_LONGITUDINAL   = 2;
+  ECPB_VERTICAL       = 3;
+  ECPB_PITCH          = 4;
+  ECPB_ROLL           = 5;
+  ECPB_ISO            = 6;
+  ECPB_COLUMN         = 7;
+  ECPB_TABLETOP       = 8;
+  ECPB_RECEIVER_BOARD = 9;
+  ECPB_SMU            = 10;
+}
+enum ErrorCodePrefixC
+{
+  ECPC_CORE_APP    = 0;
+  ECPC_SERVICE_APP = 1;
+  ECPC_BOOT_APP    = 2;
+  ECPC_SUPERVISOR  = 3;
+}
+enum ErrorCodeSuffix
+{
+  option allow_alias = true;
+  ECS_UNDEF = 0;
+  //code
+  ECS_CODE_ETHERCAT_COMM_ERR           = 0x0001;
+  ECS_CODE_ETHERCAT_OP_STATE_NOT_REACH = 0x0002;
+  ECS_CODE_LINAC_RT_COMM_ERR           = 0x0003;
+  ECS_CODE_SERVICE_APP_COMM_ERR        = 0x0004;
+  ECS_CODE_SUPERVISOR_COMM_ERR         = 0x0005;
+  ECS_CODE_SERVICE_APP_START_ERR       = 0x0006;
+  ECS_CODE_FILE_IO_ERR                 = 0x0007;
+  ECS_CODE_CONFIG_CORRUPT              = 0x0008;
+  ECS_CODE_CONFIG_SYNC_ERR             = 0x0009;
+  ECS_CODE_COMPENSATION_MISMATCH       = 0x000A;
+  ECS_CODE_TABLE_SHIFT_ERR_MISMATCH    = 0x000B;
+  //individual axis
+  //individual axis - software
+  ECS_SW_UP_POS_LIMIT                = 0x0001;
+  ECS_SW_LOW_POS_LIMIT               = 0x0002;
+  ECS_SW_POS_SENSOR_MISMATCH         = 0x0003;
+  ECS_SW_BREAK_CURRENT_TOO_HIGH      = 0x0004;
+  ECS_SW_BREAK_CURRENT_TOO_LOW       = 0x0005;
+  ECS_SW_VELOCITY_TOO_HIGH           = 0x0006;
+  ECS_SW_VELOCITY_NOT_REACH          = 0x0007;
+  ECS_SW_CAL_TIMEOUT                 = 0x0101;
+  ECS_SW_CAL_OPTIMIZE_FAIL           = 0x0102;
+  ECS_SW_CAL_RESULT_MISMATCH         = 0x0301;
+  ECS_SW_PRIM_KINEMATIC_S2P_MISMATCH = 0x0302;
+  ECS_SW_PRIM_KINEMATIC_P2S_MISMATCH = 0x0303;
+  ECS_SW_2ND_KINEMATIC_S2P_MISMATCH  = 0x0304;
+  //individual axis - servo
+  ECS_SERVO_OVER_CURRENT             = 0x2311;
+  ECS_SERVO_SHORT_CIRCUIT            = 0x2340;
+  ECS_SERVO_UNDER_VOLTAGE            = 0x3120;
+  ECS_SERVO_PHASE_LOSS               = 0x3130;
+  ECS_SERVO_OVER_VOLTAGE             = 0x3310;
+  ECS_SERVO_OVERHEATING              = 0x4310;
+  ECS_SERVO_ECAM_DIFF_TOO_LARGE      = 0x5280;
+  ECS_SERVO_TIMING_ERR               = 0x5281;
+  ECS_SERVO_DISABLED_BY_SWITCH       = 0x5441;
+  ECS_SERVO_DISABLED_BY_ABORT_MOTION = 0x5442;
+  ECS_SERVO_CPU_FATAL_ERR            = 0x6180;
+  ECS_SERVO_CPU_EXCEPTION            = 0x6181;
+  ECS_SERVO_USER_PROGRAM_ABORT       = 0x6200;
+  ECS_SERVO_RPDO_MAPPED_ERR          = 0x6300;
+  ECS_SERVO_DATABASE_INCONSISTENT    = 0x6320;
+  ECS_SERVO_MOTOR_STUCK              = 0x7121;
+  ECS_SERVO_FEEDBACK_ERR             = 0x7300;
+  ECS_SERVO_COMMUTATION_FAIL         = 0x7306;
+  ECS_SERVO_FEEDBACK_LOSS            = 0x7380;
+  ECS_SERVO_DIGITAL_HALL_SENSOR_ERR  = 0x7381;
+  ECS_SERVO_COMMUTATION_PROCESS_ERR  = 0x7382;
+  ECS_SERVO_CAN_MSG_LOST             = 0x8110;
+  ECS_SERVO_HEARTBEAT_EVENT          = 0x8130;
+  ECS_SERVO_RECOVERD_FROM_BUS_OFF    = 0x8140;
+  ECS_SERVO_PROTOCOL_ERR             = 0x8200;
+  ECS_SERVO_ACCESS_NONCONFIG_RPDO    = 0x8210;
+  ECS_SERVO_PEAK_CURRENT_EXCEED      = 0x8311;
+  ECS_SERVO_ELECTRICAL_0_LOST        = 0x8380;
+  ECS_SERVO_TUNE_CURRENT_OFFSET_ERR  = 0x8381;
+  ECS_SERVO_SPEED_TRACK_ERR          = 0x8480;
+  ECS_SERVO_SPEED_LIMIT_EXCEED       = 0x8481;
+  ECS_SERVO_POS_TRACK_ERR            = 0x8611;
+  ECS_SERVO_POS_LIMIT_EXCEED         = 0x8680;
+  ECS_SERVO_ACCESS_ERR               = 0xFF00;
+  ECS_SERVO_USER_EMIT_FUNC_EXEC      = 0xFF01;
+  ECS_SERVO_IP_MODE_UNDERFLOW        = 0xFF02;
+  ECS_SERVO_START_ERR                = 0xFF10;
+  ECS_SERVO_SAFETY_SWITCH_SENSED     = 0xFF20;
+  ECS_SERVO_MODULO_OVERFLOW_LIMIT    = 0xFF30;
+  ECS_SERVO_NUMERIC_OVERFLOW_LIMIT   = 0xFF34;
+  ECS_SERVO_GANTRY_SLAVE_DISABLED    = 0xFF40;
+  //individual axis - 2nd SSI terminal
+  ECS_2ND_SSI_DATA_ERR      = 0x0000;
+  ECS_2ND_SSI_FRAME_ERR     = 0x0001;
+  ECS_2ND_SSI_POWER_FAILURE = 0x0002;
+  ECS_2ND_SSI_SYNC_ERR      = 0x0003;
+  ECS_2ND_SSI_TXPDO_STATE   = 0x0004;
+  //individual axis - 2nd encoder
+  ECS_2ND_ENCODER_DATA_WARN = 0x0100;
+  ECS_2ND_ENCODER_DATA_ERR  = 0x0101;
+  //individual axis - serial terminal channel
+  ECS_SERIAL_TERMINAL_BUF_FULL    = 0x1001;
+  ECS_SERIAL_TERMINAL_PARITY_ERR  = 0x1002;
+  ECS_SERIAL_TERMINAL_FRAME_ERR   = 0x1003;
+  ECS_SERIAL_TERMINAL_OVERRUN_ERR = 0x1004;
+  //individual axis - inclinometer
+  ECS_INCLINOMETER_CRC_ERR = 0x1101;
+  //individual axis - external ref position sensor
+  ECS_EXT_POS_SENSOR_CONNECT_ERR    = 0x0001;
+  ECS_EXT_POS_SENSOR_DATA_FRMAE_ERR = 0x0002;
+  //individual axis - primary SSI terminal
+  ECS_PRIM_SSI_DATA_ERR      = 0x0000;
+  ECS_PRIM_SSI_FRAME_ERR     = 0x0001;
+  ECS_PRIM_SSI_POWER_FAILURE = 0x0002;
+  ECS_PRIM_SSI_SYNC_ERR      = 0x0003;
+  ECS_PRIM_SSI_TXPDO_STATE   = 0x0004;
+  //individual axis - primary encoder
+  ECS_PRIM_ENCODER_DATA_WARN = 0x0100;
+  ECS_PRIM_ENCODER_DATA_ERR  = 0x0101;
+  //receiver
+  ECS_RECV_UIMA_CAN_FAIL          = 0x0000;
+  ECS_RECV_UIMA_ENALBE_BAR_STUCK  = 0x0001;
+  ECS_RECV_UIMA_JOYSTICK1_STUCK   = 0x0002;
+  ECS_RECV_UIMA_JOYSTICK2_STUCK   = 0x0003;
+  ECS_RECV_UIMA_RESET_MOTOR_STUCK = 0x0004;
+  ECS_RECV_UIMA_TGO_STUCK         = 0x0005;
+  ECS_RECV_UIMA_ENABLE_BAR_FIRST  = 0x0006;
+  ECS_RECV_UIMB_CAN_FAIL          = 0x0100;
+  ECS_RECV_UIMB_ENALBE_BAR_STUCK  = 0x0101;
+  ECS_RECV_UIMB_JOYSTICK1_STUCK   = 0x0102;
+  ECS_RECV_UIMB_JOYSTICK2_STUCK   = 0x0103;
+  ECS_RECV_UIMB_RESET_MOTOR_STUCK = 0x0104;
+  ECS_RECV_UIMB_TGO_STUCK         = 0x0105;
+  ECS_RECV_UIMB_ENABLE_BAR_FIRST  = 0x0106;
+  ECS_RECV_HHCA_CAN_FAIL          = 0x0200;
+  ECS_RECV_HHCA_ENABLE_BAR_STUCK  = 0x0201;
+  ECS_RECV_HHCA_JOYSTICK_STUCK    = 0x0202;
+  ECS_RECV_HHCA_RESET_MOTOR_STUCK = 0x0203;
+  ECS_RECV_HHCA_TGO_STUCK         = 0x0204;
+  ECS_RECV_HHCA_THUMBWHEEL_STUCK  = 0x0205;
+  ECS_RECV_HHCA_ENABLE_BAR_FIRST  = 0x0206;
+  ECS_RECV_HHCA_AXIS_SWITCH_WARN  = 0x0207;
+  ECS_RECV_HHCA_ARM_SWITCH_WARN   = 0x0208;
+  ECS_RECV_HHCA_DIAL_SWITCH_WARN  = 0x0209;
+  ECS_RECV_HHCB_CAN_FAIL          = 0x0300;
+  ECS_RECV_HHCB_ENABLE_BAR_STUCK  = 0x0301;
+  ECS_RECV_HHCB_JOYSTICK_STUCK    = 0x0302;
+  ECS_RECV_HHCB_RESET_MOTOR_STUCK = 0x0303;
+  ECS_RECV_HHCB_TGO_STUCK         = 0x0304;
+  ECS_RECV_HHCB_THUMBWHEEL_STUCK  = 0x0305;
+  ECS_RECV_HHCB_ENABLE_BAR_FIRST  = 0x0306;
+  ECS_RECV_HHCB_AXIS_SWITCH_WARN  = 0x0307;
+  ECS_RECV_HHCB_ARM_SWITCH_WARN   = 0x0308;
+  ECS_RECV_HHCB_DIAL_SWITCH_WARN  = 0x0309;
+  ECS_RECV_ENABLE_SIG_MISMATCH    = 0x0400;
+  ECS_RECV_STOP_MOTION_STUCK      = 0x0401;
+  ECS_RECV_LONG_DIR_CONFLICT      = 0x0402;
+  ECS_RECV_LAT_DIR_CONFLICT       = 0x0403;
+  ECS_RECV_ISO_DIR_CONFLICT       = 0x0404;
+  ECS_RECV_VERT_DIR_CONFLICT      = 0x0405;
+  ECS_RECV_PITCH_DIR_CONFLICT     = 0x0406;
+  ECS_RECV_ROLL_DIR_CONFLICT      = 0x0407;
+  ECS_RECV_BRAKE_POWER_ABNORMAL   = 0x0408;
+  ECS_RECV_DRIVER_POWER_ABNORMAL  = 0x0409;
+  ECS_RECV_COL_BUZZER_ACTIVE      = 0x0410;
+  ECS_RECV_Z_LIMIT                = 0x0411;
+  //supervisor
+  ECS_SUPER_FILE_IO_ERR                 = 0x0001;
+  ECS_SUPER_CONFIG_CORRUPT              = 0x0002;
+  ECS_SUPER_COMPENSATION_MISMATCH       = 0x0003;
+  ECS_SUPER_TABLE_SHIFT_ERR_MISMATCH    = 0x0004;
+  ECS_SUPER_CAL_RESULT_MISMATCH         = 0x0001;
+  ECS_SUPER_PRIM_KINEMATIC_S2P_MISMATCH = 0x0002;
+  ECS_SUPER_PRIM_KINEMATIC_P2S_MISMATCH = 0x0003;
+  ECS_SUPER_2ND_KINEMATIC_S2P_MISMATCH  = 0x0004;
+}
+enum LocalFaultID
+{
+  UNDEF_ID = 0x0;
+  ETHER_CAT_COMM = 0x1;
+  ETHER_CAT_OPSTATE_NOT_REACHED = 0x2;
+  LINAC_RT_COMM = 0x3;
+  SRV_WEB_COMM = 0x4;
+  SUPERVISOR_COMM = 0x5;
+  FILE_IO_ERROR = 0x6;
+  CFG_CORRUPTED = 0x7;
+  CFG_SYNC_FAILURE = 0x8;
+  CALIBRATION_TIMEOUT = 0x9;
+  CALIBRATION_OUT_OF_RANGE = 0xA;
+  CALIBRATION_MISMTACH = 0xB;
+  SENSOR_TO_POS_MISMATH = 0xC;
+  POS_TO_SENSOR_MISMATCH = 0xD;
+  CALIBRATION_OPTIMIZATION_FAILED = 0xE;
+  COMPENSATION_MISMATCH = 0xF;
+  IGRT_SHIFT_MISMATCH = 0x10;
+  POSITION_UPPER_LIMIT_1ST = 0x11;
+  POSITION_LOWER_LIMIT_1ST = 0x12;
+  POSITION_UPPER_LIMIT_2ND = 0x13;
+  POSITION_LOWER_LIMIT_2ND = 0x14;
+  POSITION_SENSOR_MISMATCH = 0x15;
+  BRAKE_CURRENT = 0x16;
+  VELOCITY_IS_TOO_HIGH = 0x17;
+  SERVO_FAULT = 0x18;
+  SERVO_CURRENT = 0x19;
+  SPECIFIED_VELOCITY_IS_NOT_REACHED = 0x1A;
+  SENSOR_TERMINAL_ERROR = 0x1B;
+  SENSOR_DATA_ERROR = 0x1C;
+  RECEIVER_ERROR = 0x1D;
+}
+enum FaultCommands
+{
+  RESET_COMPONENT        = 0;
+  OVERRIDE_COMPONENT     = 1;
+  UN_OVERRIDE_COMPONENT  = 2;
+  RESET_INDIVIDUAL       = 3;
+  OVERRIDE_INDIVIDUAL    = 4;
+  UN_OVERRIDE_INDIVIDUAL = 5;
+}
+message FaultMetadata{
+  string component            = 1;
+  LocalFaultID local_fault_id = 2;
+  string label                = 3;
+  string description          = 4;
+  bool is_overridable         = 5;
+  bool is_lached              = 6;
+  bool is_overridden          = 7;
+}
+message FaultOption
+{
+  string component            = 1;
+  LocalFaultID local_fault_id = 2;  
+  bool is_overridden          = 3;
+}
+message FaultReport
+{
+  repeated FaultOption fault_option = 1; 
+}
+message Error
+{
+  ErrorCodePrefixA prefix_a = 1;
+  ErrorCodePrefixB prefix_b = 2;
+  ErrorCodePrefixC prefix_c = 3;
+  ErrorCodeSuffix  suffix   = 4;
+  bool is_resetable = 5;
+  bool is_overridable = 6;
+}
+message Axis {
+  AxisIndex axis  = 1;
+  int32     pos   = 2;
+  uint32    speed = 3;
+}
+message AxisStatus {
+  AxisIndex axis = 1;
+  int32 primary_position = 2;
+  int32 secondary_position = 3;
+}
+message TblStatusPush {
+  repeated AxisStatus axes = 1;
+}
+message FaultPush {
+  repeated Error errors = 1;
+}

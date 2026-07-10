@@ -1,0 +1,304 @@
+// $Header: http://gbcsvalm01.int.elekta.com:49158/svn/6D_PPS/PPS_Protocol/tags/PPS_Protocol_1.0.0.36/proto/tblservicemode.proto 1161 2023-03-16 08:39:59Z xzhae10011 $
+syntax = "proto3";
+import "util.proto";
+import "tblctl.proto";
+package TblServiceModeProto;
+
+enum PositionMode {
+  ABSOLUTE_MOTION = 0;
+  RELATIVE_MOTION = 1;
+}
+enum AutoCalStage{
+  START_AUTO_CALIBRATION           = 0;
+  CONFIRM_SAFTY_WARNING            = 1;
+  CONFIRM_MOVE_TO_LASER_CENTER     = 2;
+  START_TO_B_SIDE                  = 3;
+  REACH_B_SIDE                     = 4;
+  START_TO_A_SIDE                  = 5;
+  REACH_A_SIDE                     = 6;
+  START_TO_CENTER                  = 7;
+  REACH_CENTER                     = 8;
+  SAVE_AUTO_CAL_RESULT             = 9;
+  ABORT_AUTO_CAL_RESULT            = 10;
+  AUTO_CAL_RESULT_PROCESS_COMPLETE = 11;
+}
+message Req{
+  bool ENABLE_BAR                        = 1;
+  bool RESET_MOTOR                       = 2;
+  bool STOP_MOTION                       = 3;
+  bool COLUMN_BRAKE_RELEASE              = 4;
+  bool MAIN_POWER_FAILURE                = 5;
+  bool Z_LIMIT_TOUCH                     = 6;
+  bool VAC_HOST                          = 7;
+  bool SHUT_DOWN                         = 8;
+  bool HWME_RDY                          = 9;
+  bool TABLE_ASU_RDY                     = 10;
+  bool LINAC_ASU_RDY                     = 11;
+  bool ARM_ASU_RDY                       = 12;
+}
+message State{
+  bool RECEIVER_RDY                      = 1;
+  bool STAND_ALONE_MODE                  = 2;
+  bool EMERGENCY_MODE                    = 3;
+}
+message UIMAW{
+  bool UIMA_CAN_FAIL                     = 1;
+  bool UIMA_ENB_BAR_STUCK                = 2;
+  bool UIMA_JOY_STICK1_STUCK             = 3;
+  bool UIMA_JOY_STICK2_STUCK             = 4;
+  bool UIMA_RESET_MOTOR_STUCK            = 5;
+  bool UIMA_TGO_STUCK                    = 6;
+  bool UIMA_ENB_BAR_FIRST                = 7;
+}
+message UIMBW{
+  bool UIMB_CAN_FAIL                     = 1;
+  bool UIMB_ENB_BAR_STUCK                = 2;
+  bool UIMB_JOY_STICK1_STUCK             = 3;
+  bool UIMB_JOY_STICK2_STUCK             = 4;
+  bool UIMB_RESET_MOTOR_STUCK            = 5;
+  bool UIMB_TGO_STUCK                    = 6;
+  bool UIMB_ENB_BAR_FIRST                = 7;
+}
+message HHCAW{
+  bool HHCA_CAN_FAIL                     = 1;
+  bool HHCA_ENB_BAR_STUCK                = 2;
+  bool HHCA_JOY_STICK_STUCK              = 3;
+  bool HHCA_RESET_MOTOR_STUCK            = 4;
+  bool HHCA_TGO_STUCK                    = 5;
+  bool HHCA_THUMB_WHEEL_STUCK            = 6;
+  bool HHCA_ENB_BAR_FIRST                = 7;
+  bool HHCA_AXIS_SWITCH_WARNING          = 8;
+  bool HHCA_ARM_CTRL_OBJ_SWITCH_WARNING  = 9;
+  bool HHCA_DIAL_CTRL_SEL_SWITCH_WARNING = 10;
+}
+message HHCBW{
+  bool HHCB_CAN_FAIL                     = 1;
+  bool HHCB_ENB_BAR_STUCK                = 2;
+  bool HHCB_JOY_STICK_STUCK              = 3;
+  bool HHCB_RESET_MOTOR_STUCK            = 4;
+  bool HHCB_TGO_STUCK                    = 5;
+  bool HHCB_THUMB_WHEEL_STUCK            = 6;
+  bool HHCB_ENB_BAR_FIRST                = 7;
+  bool HHCB_AXIS_SWITCH_WARNING          = 8;
+  bool HHCB_ARM_CTRL_OBJ_SWITCH_WARNING  = 9;
+  bool HHCB_DIAL_CTRL_SEL_SWITCH_WARNING = 10;
+}
+message OW{
+  bool ENB_BAR_BREAK                     = 1;
+  bool STM_STUCK                         = 2;
+  bool LONGITUDE_CON_CONFLICT          = 3;
+  bool LATERAL_CON_CONFLICT            = 4;
+  bool ISO_CON_CONFLICT                = 5;
+  bool VERTICAL_CON_CONFLICT           = 6;
+  bool PITCH_CON_CONFLICT              = 7;
+  bool ROLL_CON_CONFLICT               = 8;
+  bool BRAKE_POWER_ABNORMAL              = 9;
+  bool DRIVER_POWER_ABNORMAL             = 10;
+  bool COLUMN_BUZZER_ACTIVE              = 11;
+}
+message VersionInfo{
+  string BUILD_DATE              = 1;
+  uint32 SVN_VERSION             = 2;
+  uint32 UIMA_SW_VERSION         = 3;
+  uint32 UIMB_SW_VERSION         = 4;
+  uint32 HHCA_SW_VERSION         = 5;
+  uint32 HHCB_SW_VERSION         = 6;
+  uint32 RECEIVER_ARM_SW_VERSION = 7;
+  uint32 RECEIVER_SW_VERSION     = 8;
+  uint64 UIMA_HW_VERSION         = 9;
+  uint64 UIMB_HW_VERSION         = 10;
+  uint64 HHCA_HW_VERSION         = 11;
+  uint64 HHCB_HW_VERSION         = 12;
+  uint64 RECEIVER_HW_VERSION     = 13;
+  uint64 RECEIVER_SERIAL_NUMBER  = 14;
+}
+message AutoCalOperateReq {
+  Util.AxisIndex axes         = 1;
+  AutoCalStage auto_cal_stage = 2;
+}
+message AutoCalAbortReq {
+  Util.AxisIndex axes = 1;
+}
+message OperationEnableReq
+{
+  repeated Util.AxisIndex axes = 1;
+}
+message OperationDisableReq
+{
+  repeated Util.AxisIndex axes = 1;
+}
+message CountMoveAxisReq {
+  Util.AxisIndex axis  = 1;
+  int64 count          = 2;
+  int64 count_velocity = 3;
+  PositionMode mode    = 4;
+}
+message CountMoveReq
+{
+  repeated CountMoveAxisReq reqs = 1;
+}
+message PositionMoveAxisReq {
+  Util.AxisIndex axis  = 1;
+  double         pos   = 2;
+  double         speed = 3;
+  PositionMode   mode  = 4;
+}
+message PositionMoveReq
+{
+  repeated PositionMoveAxisReq reqs = 1;
+}
+message VelocityMoveAxisReq {
+  Util.AxisIndex axis  = 1;
+  Util.Direction dir   = 2;
+  double         speed = 3;
+}
+message VelocityMoveReq {
+  repeated VelocityMoveAxisReq axes = 1;
+}
+message ServiceShiftCorrectionReq {
+  double shift_lateral = 1;
+  double shift_longitudinal = 2;
+  double shift_vertical = 3;
+  double shift_pitch = 4;
+  double shift_roll = 5;
+  double shift_iso = 6;
+}
+message ServiceIec61217AsuReq {
+  double pos_lateral = 1;
+  double pos_longitudinal = 2;
+  double pos_vertical = 3;
+  double pos_pitch = 4;
+  double pos_roll = 5;
+  double pos_iso = 6;
+}
+
+message FaultListInitReq{
+}
+message FaultHandleReq
+{
+  Util.FaultCommands fault_commands = 1;
+  Util.FaultOption fault_option     = 2;
+}
+message GetVersionInfoReq{
+}
+message GetEmulationStatusReq{
+}
+message AutoCalOperateRep {
+  Util.ReplyStatus status = 1;
+}
+message AutoCalAbortRep {
+  Util.ReplyStatus status = 1;
+}
+message OperationEnableRep
+{
+  Util.ReplyStatus status = 1;
+}
+message OperationDisableRep
+{
+  Util.ReplyStatus status = 1;
+}
+message CountMoveRep {
+  Util.ReplyStatus status = 1;
+}
+message PositionMoveRep {
+  Util.ReplyStatus status = 1;
+}
+message VelocityMoveRep {
+  Util.ReplyStatus status = 1;
+}
+message ServiceShiftCorrectionRep {
+  Util.ReplyStatus status = 1;
+}
+message ServiceIec61217AsuRep {
+  Util.ReplyStatus status = 1;
+}
+message FaultListInitRep{
+  repeated Util.FaultMetadata faults = 1; 
+}
+message FaultHandleRep
+{
+  Util.ReplyStatus status = 1;
+}
+message GetVersionInfoRep{
+  VersionInfo version_info = 1;
+}
+message GetEmulationStatusRep{
+  bool is_emulation = 1;
+}
+message ServiceAxisStatus {
+  Util.AxisIndex axis = 1;
+  double primary_position = 2;
+  double secondary_position = 3;
+  double velocity = 4;
+  int64 primary_count = 5;
+  int64 secondary_count = 6;
+  int64 count_velocity = 7;
+  int32 motor_current = 8;
+  bool is_target_reached = 9;
+  double position_diff = 10;
+  string error_code = 11;
+}
+message ServiceStatusPush {
+  repeated ServiceAxisStatus axes = 1;
+}
+message AutoCalStatusPush{
+  Util.AxisIndex axes = 1;
+  AutoCalStage auto_cal_stage = 2;
+  repeated int32 event = 3;
+}
+message DiagnosisInfoPush{
+  Req req                 = 1;
+  int32 axis_brake_action = 2;
+  State state             = 3;
+  UIMAW uimaw             = 4;
+  UIMBW uimbw             = 5;
+  HHCAW hhcaw             = 6;
+  HHCBW hhcbw             = 7;
+  OW ow                   = 8;
+}
+message ServerRx {
+  oneof Msg {
+    AutoCalOperateReq auto_cal_operate_req = 1;
+    CountMoveReq count_move_req  = 2;
+    PositionMoveReq pos_move_req = 3;
+    OperationEnableReq enable_req = 4;
+    OperationDisableReq disable_req = 5;
+    AutoCalAbortReq auto_cal_abort_req = 6;
+    VelocityMoveReq velocity_move_req = 7;
+    TblCtlProto.StopMoveReq stop_move_req = 8;
+    TblCtlProto.FaultResetReq fault_reset_req = 9;
+    TblCtlProto.FaultOverrideReq fault_override_req = 10;
+    ServiceShiftCorrectionReq shift_correction_req = 11;
+    ServiceIec61217AsuReq iec61217_asu_req = 12;
+	FaultListInitReq fault_list_init_req = 13;
+    FaultHandleReq fault_handle_req = 14;
+	GetVersionInfoReq get_version_info_req = 15;
+	GetEmulationStatusReq get_emulation_status_req = 16;
+  }
+}
+
+message ServerTx {
+  oneof Msg {
+    AutoCalOperateRep auto_cal_operate_rep = 1;
+    CountMoveRep count_move_rep  = 2;
+    PositionMoveRep pos_move_rep = 3;
+    OperationEnableRep enable_rep = 4;
+    ServiceStatusPush service_status_push = 5;
+    OperationDisableRep disable_rep = 6;
+    AutoCalAbortRep auto_cal_abort_rep = 7;
+    TblCtlProto.IntegrityModeInd integrity_mode_ind = 8;
+    VelocityMoveRep velocity_move_rep = 9;
+    TblCtlProto.StopMoveRep stop_move_rep = 10;
+    TblCtlProto.FaultResetRep fault_reset_rep = 11;
+    TblCtlProto.FaultOverrideRep fault_override_rep = 12;
+	AutoCalStatusPush auto_cal_status_push = 13;
+    ServiceShiftCorrectionRep shift_correction_rep = 14;
+    ServiceIec61217AsuRep iec61217_asu_rep = 15;
+    DiagnosisInfoPush diagnosis_info_push = 16;
+	FaultListInitRep fault_list_init_rep = 17;
+    FaultHandleRep fault_handle_rep = 18;
+    Util.FaultReport fault_report = 19;
+	GetVersionInfoRep get_version_info_rep = 20;
+	GetEmulationStatusRep get_emulation_status_rep = 21;
+  }
+}

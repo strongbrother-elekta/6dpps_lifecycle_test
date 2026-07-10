@@ -1,0 +1,20 @@
+// $Header: http://gbcsvalm01.int.elekta.com:49158/svn/6D_PPS/PPS_Protocol/tags/PPS_Protocol_1.0.0.36/proto/tblctlsuite.proto 94 2021-09-10 09:19:39Z GBScoAndM $
+syntax = "proto3";
+// protocols
+import "tblctl.proto";
+
+package TblCtlSuite;
+
+// Server Rx protocols
+message ServerRx {
+  oneof Prtcl {
+    TblCtlProto.ServerRx  ctl  = 1;
+  }
+}
+
+// Server Tx protocols
+message ServerTx {
+  oneof Prtcl {
+    TblCtlProto.ServerTx  ctl  = 1;
+  }
+}

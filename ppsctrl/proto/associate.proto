@@ -1,0 +1,57 @@
+// $Header: http://gbcsvalm01.int.elekta.com:49158/svn/6D_PPS/PPS_Protocol/tags/PPS_Protocol_1.0.0.36/proto/associate.proto 94 2021-09-10 09:19:39Z GBScoAndM $
+// Associate Protocol
+syntax = "proto3";
+package Associate;
+
+message Data {
+  bytes   payload = 1;
+  fixed32 crc     = 2;
+}
+
+message ServerRx {
+  message AssociateReq {
+    uint32 version = 1;// Protocol version number of client's comunication profile
+  }
+  message AssociateReleaseReq {
+  }
+  message KeepAliveReq {
+  }
+  // ServerRx message Layout
+  uint32    association_id                = 1;//An ID is created by server and replied through a successful AssociateRep.
+                                              //The replied ID is intended to be carried by forthcoming messages, sent from client.
+  uint32    sequence_num_bi               = 2;//0..0xffffffff=used by subsequent messages (including wrap-around)
+  oneof Msg {
+    AssociateReq        assoc_req         = 3;
+    AssociateReleaseReq assoc_release_req = 4;
+    Data                data              = 5;
+    KeepAliveReq        keep_alive_req    = 6;
+  }
+}
+
+message ServerTx {
+  message AssociateRep {
+    enum StatusCode {
+      UNDEF           = 0;
+      SUCCESS         = 1;
+      // Errors:
+      VERSION_ERR     = 2;
+    }
+    StatusCode status_code = 1;
+  }
+  message AssociateReleaseRep {
+  }
+  message KeepAliveRep {
+  }
+
+  // ServerTx message Layout
+  uint32 association_id                   = 1;// An ID created by server.
+  uint32 sequence_num_uni                 = 2;//used for push messages sent from server.
+  uint32 sequence_num_bi                  = 3;//used for reply messages sent from server.
+                                              //0..0xffffffff=used by subsequent messages (including wrap-around)
+  oneof Msg {
+    AssociateRep        assoc_rep         = 4;
+    AssociateReleaseRep assoc_release_rep = 5;
+    Data                data              = 6;
+    KeepAliveRep        keep_alive_rep    = 7;
+  }
+}

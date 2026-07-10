@@ -1,0 +1,1 @@
+<?xml version="1.0" encoding="utf-8"?><testsuites><testsuite name="pytest" errors="0" failures="0" skipped="0" tests="1" time="1616.101" timestamp="2025-02-19T13:44:20.982455" hostname="AP-gFSNObau0HZh"><testcase classname="pps_cycle_test_gamma1_clinic" name="test_cycle_move" time="1616.051" /></testsuite></testsuites>

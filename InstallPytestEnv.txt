@@ -1,0 +1,127 @@
+1. download and install python-3.10.4.exe(32bit) , then run 'python -V' to check its version
+Python 3.10.4
+
+2. python.exe -m pip install --upgrade pip
+
+Collecting pip
+  Downloading pip-22.3-py3-none-any.whl (2.1 MB)
+     ---------------------------------------- 2.1/2.1 MB 250.7 kB/s eta 0:00:00
+Installing collected packages: pip
+  Attempting uninstall: pip
+    Found existing installation: pip 22.2.2
+    Uninstalling pip-22.2.2:
+      Successfully uninstalled pip-22.2.2
+Successfully installed pip-22.3
+
+
+3. pip install setuptools
+
+Collecting setuptools
+  Downloading setuptools-65.5.0-py3-none-any.whl (1.2 MB)
+     ---------------------------------------- 1.2/1.2 MB 146.2 kB/s eta 0:00:00
+Installing collected packages: setuptools
+  Attempting uninstall: setuptools
+    Found existing installation: setuptools 65.4.1
+    Uninstalling setuptools-65.4.1:
+      Successfully uninstalled setuptools-65.4.1
+Successfully installed setuptools-65.5.0
+
+4. pip install black
+Collecting black
+  Downloading black-22.10.0-py3-none-any.whl (165 kB)
+     ---------------------------------------- 165.8/165.8 kB 525.4 kB/s eta 0:00:00
+Collecting click>=8.0.0
+  Using cached click-8.1.3-py3-none-any.whl (96 kB)
+Collecting mypy-extensions>=0.4.3
+  Using cached mypy_extensions-0.4.3-py2.py3-none-any.whl (4.5 kB)
+
+Collecting pathspec>=0.9.0
+  Downloading pathspec-0.10.1-py3-none-any.whl (27 kB)
+
+Installing collected packages: mypy-extensions, pathspec, click, black
+Successfully installed black-22.10.0 click-8.1.3 mypy-extensions-0.4.3 pathspec-0.10.1
+
+5.pip install pylint
+
+WARNING: Retrying (Retry(total=4, connect=None, read=None, redirect=None, status=None)) after connection broken by 'SSLError(SSLCertVerificationError(1, '[SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: self signed certificate in certificate chain (_ssl.c:997)'))': /simple/pip/
+WARNING: Retrying (Retry(total=3, connect=None, read=None, redirect=None, status=None)) after connection broken by 'SSLError(SSLCertVerificationError(1, '[SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: self signed certificate in certificate chain (_ssl.c:997)'))': /simple/pip/
+
+Collecting pylint
+  Downloading pylint-2.15.5-py3-none-any.whl (508 kB)
+     ---------------------------------------- 508.2/508.2 kB 236.1 kB/s eta 0:00:00
+Collecting astroid<=2.14.0-dev0,>=2.12.12
+  Downloading astroid-2.12.12-py3-none-any.whl (264 kB)
+     ---------------------------------------- 264.7/264.7 kB 175.1 kB/s eta 0:00:00
+
+Installing collected packages: astroid, pylint
+  Attempting uninstall: astroid
+    Found existing installation: astroid 2.12.10
+    Uninstalling astroid-2.12.10:
+      Successfully uninstalled astroid-2.12.10
+  Attempting uninstall: pylint
+    Found existing installation: pylint 2.15.3
+    Uninstalling pylint-2.15.3:
+      Successfully uninstalled pylint-2.15.3
+Successfully installed astroid-2.12.12 pylint-2.15.5
+
+6. pip install mypy
+
+Collecting mypy
+  Downloading mypy-0.982-py3-none-any.whl (2.3 MB)
+     ---------------------------------------- 2.3/2.3 MB 1.9 MB/s eta 0:00:00
+Collecting typing-extensions>=3.10
+  Downloading typing_extensions-4.4.0-py3-none-any.whl (26 kB)
+
+Installing collected packages: typing-extensions, mypy
+Successfully installed mypy-0.982 typing-extensions-4.4.0
+
+7. pip install pytest
+
+Collecting pytest
+  Downloading pytest-7.1.3-py3-none-any.whl (298 kB)
+     ---------------------------------------- 298.2/298.2 kB 657.4 kB/s eta 0:00:00
+
+Collecting iniconfig
+  Using cached iniconfig-1.1.1-py2.py3-none-any.whl (5.0 kB)
+Collecting pluggy<2.0,>=0.12
+  Using cached pluggy-1.0.0-py2.py3-none-any.whl (13 kB)
+
+Collecting py>=1.8.2
+  Using cached py-1.11.0-py2.py3-none-any.whl (98 kB)
+Collecting packaging
+  Using cached packaging-21.3-py3-none-any.whl (40 kB)
+Collecting attrs>=19.2.0
+  Using cached attrs-22.1.0-py2.py3-none-any.whl (58 kB)
+Collecting pyparsing!=3.0.5,>=2.0.2
+  Using cached pyparsing-3.0.9-py3-none-any.whl (98 kB)
+Installing collected packages: iniconfig, pyparsing, py, pluggy, attrs, packaging, pytest
+Successfully installed attrs-22.1.0 iniconfig-1.1.1 packaging-21.3 pluggy-1.0.0 py-1.11.0 pyparsing-3.0.9 pytest-7.1.3
+
+8. pip install pyzmq
+
+Collecting pyzmq
+  Downloading pyzmq-24.0.1-cp310-cp310-win32.whl (890 kB)
+     ---------------------------------------- 890.7/890.7 kB 751.3 kB/s eta 0:00:00
+
+Installing collected packages: pyzmq
+Successfully installed pyzmq-24.0.1
+
+9. pip install protobuf
+
+WARNING: Retrying (Retry(total=4, connect=None, read=None, redirect=None, status=None)) after connection broken by 'SSLError(SSLCertVerificationError(1, '[SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: self signed certificate in certificate chain (_ssl.c:997)'))': /simple/pip/
+Collecting protobuf
+  Downloading protobuf-4.21.8-cp310-abi3-win32.whl (508 kB)
+     ---------------------------------------- 508.6/508.6 kB 346.8 kB/s eta 0:00:00
+
+Installing collected packages: protobuf
+Successfully installed protobuf-4.21.8
+
+10. pip install pytest-html
+
+11. pip install beautifulsoup4
+
+12. pip install DrissionPage
+
+
+
+
