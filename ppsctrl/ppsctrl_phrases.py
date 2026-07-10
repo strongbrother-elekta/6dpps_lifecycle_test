@@ -37,12 +37,13 @@ def set_log(filename):
 
 #logger = logging.getLogger(__name__)
 
-logger=set_log('../logs/cycle_phreses_move/hyx_test.log')
+logger=set_log('../logs/cycle_position_move/hyx_test.log')
 
 EPSINON = 0.00001
 HEARTBEAT = 0.08
 DEFAULT_TIMEOUT=8
 
+     
 def append_to_file(file_path, string_to_append):
     with open(file_path, 'a') as file:
         file.write(string_to_append)
@@ -75,21 +76,21 @@ def axis_move_handler_x(self,threadName):
                 self.x.count_velocity = int(self.x.track_velocity[self.xindex])
                 logging.info(f"------axis_move_handler_x-------- {self.xindex}/{track_count}/{self.x.count}/{self.send_stop}")  
                 self.next_move_x=False
+                time.sleep(1)
                 self.send_single_axis_pos_move_req_x()
-                #time.sleep(DEFAULT_TIMEOUT)
-                if self.xindex == 8:
-                    self.frist_phase_barrier.wait()
                 self.xindex += 1
             else:
                 #logging.info(f"------axis_move_handler_x are sleeping")  
                 time.sleep(0.01)
+        self.phase1_barrier.wait()
+        if self.x.cycle == self.x.cycle: # 新增
+            self.pitch_sem.release()    # 新增
+        
         self.x.cycle = self.x.cycle - 1
         if self.x.cycle <= 0:
             self.x.cycle = 0
-
-        #time.sleep(self.x.timeout/10)
+        self.phase2_barrier.wait()
         append_to_file(self.statistic_file_name_x,'\n')
-        self.second_phase_barrier.wait()
     logging.info(f"------axis_move_handler_x thread exit -------------------")  
 
 def axis_move_handler_y(self,threadName):
@@ -108,24 +109,18 @@ def axis_move_handler_y(self,threadName):
                 self.y.count_velocity = int(self.y.track_velocity[self.yindex])
                 logging.info(f"------axis_move_handler_y-------- {self.yindex}/{track_count}/{self.y.count}/{self.send_stop}")  
                 self.next_move_y=False
+                time.sleep(1)
                 self.send_single_axis_pos_move_req_y()
-                #time.sleep(DEFAULT_TIMEOUT*2)
-                if self.yindex == 7:
-                    self.frist_phase_barrier.wait()
                 self.yindex += 1
             else:
                 #logging.info(f"------axis_move_handler_y are sleeping")  
                 time.sleep(0.01)
-        while self.next_move_y==False:
-            time.sleep(1)
-            
+        self.phase1_barrier.wait()
         self.y.cycle = self.y.cycle - 1
         if self.y.cycle <= 0:
-            self.y.cycle = 0
-        append_to_file(self.statistic_file_name_y,'\n')            
-        self.pitch_completed.release()
-        #time.sleep(self.y.timeout/10)
-        self.second_phase_barrier.wait()
+            self.y.cycle = 0      
+        self.phase2_barrier.wait()
+        append_to_file(self.statistic_file_name_y,'\n')   
     logging.info(f"------axis_move_handler_y thread exit -------------------")
 
 def axis_move_handler_z(self,threadName):
@@ -144,29 +139,25 @@ def axis_move_handler_z(self,threadName):
                 self.z.count_velocity = float(self.z.track_velocity[self.zindex])
                 logging.info(f"------axis_move_handler_z-------- {self.zindex}/{track_count}/{self.z.count}/{self.send_stop}")  
                 self.next_move_z=False
+                time.sleep(1)
                 self.send_single_axis_pos_move_req_z()
-                #time.sleep(DEFAULT_TIMEOUT*2)
-                if self.zindex == 8:
-                    self.frist_phase_barrier.wait()
                 self.zindex += 1
             else:
                 #logging.info(f"------axis_move_handler_z are sleeping")  
                 time.sleep(0.01)
-        #time.sleep(30)
+        self.phase1_barrier.wait()
         self.z.cycle = self.z.cycle - 1
         if self.z.cycle <= 0:
-            self.z.cycle = 0
-        #time.sleep(self.z.timeout/10)
+            self.z.cycle = 0  
+        self.phase2_barrier.wait()
         append_to_file(self.statistic_file_name_z,'\n')
-        self.second_phase_barrier.wait()
     logging.info(f"------axis_move_handler_z thread exit -------------------")  
 
 
 def axis_move_handler_p(self,threadName):
     logging.info(f"thread {threadName} started at {time.ctime(time.time())}") 
     while self.p.cycle>0:
-        self.pitch_completed.acquire()
-        logging.info(f"------wait for step r-------- {self.pindex}/{self.p.count}")   
+        self.pitch_sem.acquire()
         self.pindex=1
         track_count = len(self.p.track)
         now = dt.datetime.now()
@@ -174,65 +165,69 @@ def axis_move_handler_p(self,threadName):
         self.count_p+=1
         append_to_file(self.statistic_file_name_p,  str(self.count_p)+ ';'+ str(formatted_now) + ';')
         while self.pindex<track_count:
+            #logging.info(f"------axis_move_handler_p thread have start {track_count}")  
             if self.next_move_p==True and self.send_stop==False:
                 self.p.count = float(self.p.track[self.pindex])
                 self.p.count_velocity = float(self.p.track_velocity[self.pindex])
                 logging.info(f"------axis_move_handler_p-------- {self.pindex}/{track_count}/{self.p.count}/{self.send_stop}")  
                 self.next_move_p=False
+                time.sleep(1)
                 self.send_single_axis_pos_move_req_p()
-                #time.sleep(DEFAULT_TIMEOUT)
                 self.pindex += 1
             else:
                 #logging.info(f"------axis_move_handler_p are sleeping")  
                 time.sleep(0.01)
         while self.next_move_p==False:
             time.sleep(1)
+        self.roll_sem.release()          
         self.p.cycle = self.p.cycle - 1
         if self.p.cycle <= 0:
-            self.p.cycle = 0
+            self.p.cycle = 0   
+        self.phase2_barrier.wait()
         append_to_file(self.statistic_file_name_p,'\n')
-        
-        self.roll_completed.release()
-        self.second_phase_barrier.wait()
         
     logging.info(f"------axis_move_handler_p thread exit -------------------")        
 
 def axis_move_handler_r(self,threadName):
     logging.info(f"thread {threadName} started at {time.ctime(time.time())}") 
     while self.r.cycle>0:
-        self.roll_completed.acquire()
-        logging.info(f"------wait for step r-------- {self.pindex}/{self.p.count}")  
+        self.roll_sem.acquire()
         self.rindex=1
         track_count = len(self.r.track)
         now = dt.datetime.now()
         formatted_now = now.strftime("%Y%m%d-%H:%M:%S")
         self.count_r+=1
         append_to_file(self.statistic_file_name_r,  str(self.count_r)+ ';'+ str(formatted_now) + ';')
-        while self.rindex<track_count:
+        while self.rindex<track_count: 
             #logging.info(f"------axis_move_handler_r thread have start {track_count}")  
             if self.next_move_r==True and self.send_stop==False:
                 self.r.count = float(self.r.track[self.rindex])
                 self.r.count_velocity = float(self.r.track_velocity[self.rindex])
                 logging.info(f"------axis_move_handler_r-------- {self.rindex}/{track_count}/{self.r.count}/{self.send_stop}")  
                 self.next_move_r=False
+                time.sleep(1)
                 self.send_single_axis_pos_move_req_r()
-                #time.sleep(DEFAULT_TIMEOUT)
                 self.rindex += 1
             else:
                 #logging.info(f"------axis_move_handler_r are sleeping")  
                 time.sleep(0.01)
+                
+        while self.next_move_r==False:    # 新增
+            time.sleep(1)               # 新增
+            
+        self.iso_sem.release()  # 新增
         self.r.cycle = self.r.cycle - 1
         if self.r.cycle <= 0:
-            self.r.cycle = 0  
-            
-        append_to_file(self.statistic_file_name_r,'\n')
+            self.r.cycle = 0
         time.sleep(self.r.timeout/10)
-        self.second_phase_barrier.wait()
+        self.phase2_barrier.wait()
+        append_to_file(self.statistic_file_name_r,'\n')
     logging.info(f"------axis_move_handler_r thread exit -------------------")        
 
 def axis_move_handler_iso(self,threadName):
     logging.info(f"thread {threadName} started at {time.ctime(time.time())}") 
     while self.iso.cycle>0:
+        self.iso_sem.acquire()  # 新增
         self.isoindex=1
         track_count = len(self.iso.track)
         now = dt.datetime.now()
@@ -246,20 +241,22 @@ def axis_move_handler_iso(self,threadName):
                 self.iso.count_velocity = int(self.iso.track_velocity[self.isoindex])
                  #logging.info(f"------axis_move_handler_iso-------- {self.isoindex}/{track_count}/{self.send_stop}")  
                 self.next_move_iso=False
+                time.sleep(1)
                 self.send_single_axis_pos_move_req_iso()
-                #time.sleep(DEFAULT_TIMEOUT*2)
-                if self.isoindex == 8:
-                    self.frist_phase_barrier.wait()
                 self.isoindex += 1
             else:
                 #logging.info(f"------axis_move_handler_x are sleeping")  
                 time.sleep(0.1)
+        # self.phase1_barrier.wait()        # 去掉同步X Y Z ISO 号线程中的ISO
+        
+        while self.next_move_iso==False:
+            time.sleep(1)
+        # self.pitch_sem.release()        # 去掉pitch线程
         self.iso.cycle = self.iso.cycle - 1
         if self.iso.cycle <= 0:
-            self.iso.cycle = 0  
-        #time.sleep(self.iso.timeout/10)
-        append_to_file(self.statistic_file_name_iso,'\n')
-        self.second_phase_barrier.wait()
+            self.iso.cycle = 0 
+        self.phase2_barrier.wait()
+        append_to_file(self.statistic_file_name_iso, '\n')
     logging.info(f"------axis_move_handler_iso thread exit -------------------")
 
 
@@ -268,7 +265,7 @@ def heartbeat_process(self,threadName):
     while True:
         self.send_keepalive_req()
         self.heartbeat+=1
-        if self.heartbeat>150000:
+        if self.heartbeat>1500:
             self.release_associate=False
             self.associate=False
             self.send_stop=True
@@ -276,19 +273,20 @@ def heartbeat_process(self,threadName):
             while self.release_associate==False:
                 self.send_associate_release_req()
                 logging.info(f"------heartbeat_process release-associating -------------------{self.release_associate}")    
-                time.sleep(0.1)
+                time.sleep(0.5)
             logging.info(f"------heartbeat_process release-associate done -------------------{self.release_associate}")    
             while self.associate==False:
                 self.send_associate_req()
                 logging.info(f"------heartbeat_process associating  -------------------{self.associate}")  
-                time.sleep(0.1)
+                time.sleep(0.2)
             logging.info(f"------heartbeat_process associate done  -------------------{self.associate}")  
 
             self.reset_params_disconnect()
         time.sleep(HEARTBEAT)
     logging.info(f"------heartbeat_process thread exit -------------------")
-    
-    
+
+
+
 class TableMoveParamPosition:
     def __init__(
         self,
@@ -323,7 +321,7 @@ class TableMoveParamPosition:
 
 
 
-class PPSCtrl_Phrases:
+class PPSCtrl_Position:
     def __init__(self, traceclient: TraceClient):
         self._log_labels: typing.List[str] = []
         self._log_data: typing.List[str] = []
@@ -367,11 +365,7 @@ class PPSCtrl_Phrases:
         self.last_pos_p=0.0
         self.last_pos_r=0.0
         self.last_pos_iso=0.0
-           
-        self.frist_phase_barrier = threading.Barrier(4)
-        self.second_phase_barrier = threading.Barrier(6)
-        self.pitch_completed=threading.Semaphore(0)
-        self.roll_completed=threading.Semaphore(0)
+        
         
         self.count_x=0
         self.count_y=0
@@ -380,12 +374,23 @@ class PPSCtrl_Phrases:
         self.count_r=0
         self.count_iso=0
         
+       
         self.cf = configparser.ConfigParser()
         self.heartbeat=0
         self.loop_count=0
         self.release_associate=False
         self.associate=False
         self.send_stop=False
+        
+        # 同步工具定义 
+        # self.phase1_barrier = threading.Barrier(4)         # 用于同步X Y Z ISO 号线程完成 
+        self.phase1_barrier = threading.Barrier(3)         # 用于同步X Y Z 号线程完成 ，新增
+        self.pitch_sem = threading.Semaphore(0)           # 控制PITCH线程启动 
+        self.roll_sem = threading.Semaphore(0)           # 控制ROLL线程启动 
+        self.iso_sem = threading.Semaphore(0)            # 控制Iso线程启动, 新增
+        self.all_done_event = threading.Event()            # 全局退出事件 
+        self.phase2_barrier = threading.Barrier(6)
+        
         
         now = dt.datetime.now()
         formatted_now = now.strftime("%Y%m%d%H%M%S")
@@ -402,7 +407,8 @@ class PPSCtrl_Phrases:
         self.statistic_file_name_p=folder_path+'//target_cycle_time_p.txt'
         self.statistic_file_name_r=folder_path+'//target_cycle_time_r.txt'
         self.statistic_file_name_iso=folder_path+'//target_cycle_time_iso.txt'
-
+ 
+        
     crc32_table = [
         0x0,
         0x4C11DB7,
@@ -661,7 +667,8 @@ class PPSCtrl_Phrases:
         0xB5365D03,
         0xB1F740B4,
     ]
-
+    
+        
     def _crc32(self, binaries):
         crc = 0xFFFFFFFF
         index = 0
@@ -728,35 +735,35 @@ class PPSCtrl_Phrases:
         self.axis_p_move_done=False
         self.is_z_p_linkage = True
         
-        if self.xindex>4:
+        if self.xindex>3:
            self.xindex=1
         else:
-           self.xindex=6 
+           self.xindex=4 
                
-        if self.yindex>4:
+        if self.yindex>3:
            self.yindex=1
         else:
-           self.yindex=6 
+           self.yindex=4 
 
         if self.zindex>3:
            self.zindex=1
         else:
-           self.zindex=5         
+           self.zindex=4         
         
-        if self.pindex>2:
+        if self.pindex>3:
            self.pindex=1
         else:
-           self.pindex=3         
+           self.pindex=4         
         
-        if self.rindex>2:
+        if self.rindex>3:
            self.rindex=1
         else:
-           self.rindex=3  
+           self.rindex=4  
            
         if self.isoindex>3:
            self.isoindex=1
         else:
-           self.isoindex=5   
+           self.isoindex=4   
            
         self.send_stop=False
            
@@ -807,10 +814,10 @@ class PPSCtrl_Phrases:
         serverRx.association_id = 1
         self.sequence_num_bi = self.sequence_num_bi + 1
         serverRx.sequence_num_bi = self.sequence_num_bi
-        serverRx.assoc_req.version = 1
+        serverRx.assoc_req.version = '1.0.0.74'
         serverRx_protobuf_data = serverRx.SerializeToString()
         self.traceclient.sendMsg(serverRx_protobuf_data)
-        logging.info(f"parse_serverRx : {serverRx}")
+        logging.info(f"send_associate_req : {serverRx}")
         del serverRx_protobuf_data
         del serverRx
         #gc.collect()
@@ -831,7 +838,8 @@ class PPSCtrl_Phrases:
             parse_serverTx_len = serverTx.ParseFromString(msg)
             if serverTx.WhichOneof("Msg") == "assoc_rep":
                 logging.info(f"parse_serverTx : {serverTx}")
-                if (serverTx.assoc_rep.status_code == associate_pb2.ServerTx.AssociateRep.StatusCode.SUCCESS):
+                # if (serverTx.assoc_rep.status_code == associate_pb2.ServerTx.AssociateRep.StatusCode.SUCCESS):
+                if True:
                     self.association_id = serverTx.association_id
                     self.associate=True
                     #self.timer.start()
@@ -857,7 +865,7 @@ class PPSCtrl_Phrases:
         serverRx.assoc_release_req.SetInParent()
         serverRx_protobuf_data = serverRx.SerializeToString()
         self.traceclient.sendMsg(serverRx_protobuf_data)
-        logging.info(f"parse_serverRx : {serverRx}")
+        logging.info(f"send_associate_release_req : {serverRx}")
         #self.timer.cancel()
         del serverRx_protobuf_data
         serverRx_protobuf_data=None
@@ -966,7 +974,7 @@ class PPSCtrl_Phrases:
         #axisReq.pos_id=self.req_id    
         axisReq.speed = float(movePara.count_velocity)
         axisReq.mode = movePara.mode
-        axisReq.useSecondSensor=False
+        axisReq.useSecondSensor=True
         logging.info(f"position move req : axis:{axisReq.axis},reqpos:{axisReq.pos}")
         serverRx_protobuf_data = serverRx.SerializeToString()
         self._send_data_req(serverRx_protobuf_data)
@@ -1258,6 +1266,7 @@ class PPSCtrl_Phrases:
         except:
             logging.info(f"Axis x thread create failed@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@")
         thread_heartbeat.start()
+
         threadx.start()
         thready.start()
         threadz.start()
@@ -1276,7 +1285,12 @@ class PPSCtrl_Phrases:
             #    logging.info(f"message remain size:{self.traceclient.get_queue_size()}")
             time1=time.perf_counter()
             #msg = self.traceclient.readMsg1()
-            msg=self.traceclient.recvMsgSocket1()
+            try:
+                msg=self.traceclient.recvMsgSocket1()
+            except Exception as e:
+                logging.exception("Unexcepted error: %s", e)
+                continue
+
             time2=time.perf_counter()
             #logging.info(f"read message time is:{(time2-time1)*100*10000}")
             #items_count = len(msg)
@@ -1292,13 +1306,13 @@ class PPSCtrl_Phrases:
                 serverTx = associate_pb2.ServerTx()
                 parse_serverTx_len = serverTx.ParseFromString(msg)
                 if serverTx.WhichOneof("Msg") == "keep_alive_rep":
-                    if abs(serverTx.sequence_num_bi - self.sequence_num_bi)<1000:
-                        self.heartbeat=0
+                    #if abs(serverTx.sequence_num_bi - self.sequence_num_bi)<1000:
+                    self.heartbeat=0
                 if serverTx.WhichOneof("Msg") == "assoc_release_rep":
-                    if abs(serverTx.sequence_num_bi - self.sequence_num_bi)<1000:
-                        self.release_associate=True
-                    else:
-                        logging.info(f"got a assoc release rep not for current req : {serverTx}")
+                    #if abs(serverTx.sequence_num_bi - self.sequence_num_bi)<1000:
+                    self.release_associate=True
+                    #else:
+                    #    logging.info(f"got a assoc release rep not for current req : {serverTx}")
                 if serverTx.WhichOneof("Msg") == "assoc_rep":
                     if (serverTx.assoc_rep.status_code == associate_pb2.ServerTx.AssociateRep.StatusCode.SUCCESS):
                         self.association_id = serverTx.association_id
@@ -1334,33 +1348,33 @@ class PPSCtrl_Phrases:
                                         self.last_pos_p=self.p.count
                                         self.next_move_p=True
                                         logging.info(f"------------------------------------p : {self.next_move_p},sef.p.count:{self.p.count},target:{axes.secondary_position} abs:{abs(self.p.count - axes.secondary_position)}")
-                                    else:
-                                        if self.last_pos_p!=self.p.count:
-                                            logging.info(f"------------------------------------p : {self.next_move_p},sef.p.count:{self.p.count},target:{axes.secondary_position} abs:{abs(self.p.count - axes.secondary_position)}")   
+                                    #else:
+                                    #    if self.last_pos_p!=self.p.count:
+                                    #        logging.info(f"------------------------------------p : {self.next_move_p},sef.p.count:{self.p.count},target:{axes.secondary_position} abs:{abs(self.p.count - axes.secondary_position)}")   
                                 if axes.axis == util_pb2.AxisIndex.VERTICAL:
                                     if abs(float(self.z.count) - axes.secondary_position) < 0.5 and self.next_move_z==False:
                                         append_to_file(self.statistic_file_name_z, str(self.z.count)+ ',' + str(axes.primary_position) + ',' + str(axes.secondary_position) + ';')
                                         self.last_pos_z=self.z.count
                                         self.next_move_z=True
                                         logging.info(f"------------------------------------z : {self.next_move_z},sef.z.count:{self.z.count},target:{axes.secondary_position},abs:{abs(self.z.count - axes.secondary_position)}")  
-                                    else:
-                                        if self.last_pos_z!=self.z.count:
-                                            logging.info(f"------------------------------------z1 : {self.next_move_z},sef.z.count:{self.z.count},target:{axes.secondary_position},abs:{abs(self.z.count - axes.secondary_position)}")  
+                                    #else:
+                                    #    if self.last_pos_z!=self.z.count:
+                                    #        logging.info(f"------------------------------------z1 : {self.next_move_z},sef.z.count:{self.z.count},target:{axes.secondary_position},abs:{abs(self.z.count - axes.secondary_position)}")  
                                 if axes.axis == util_pb2.AxisIndex.ROLL:
                                     if abs(float(self.r.count) - axes.secondary_position) < 0.8 and self.next_move_r==False:
                                         append_to_file(self.statistic_file_name_r, str(self.r.count)+ ',' + str(axes.primary_position) + ',' + str(axes.secondary_position) + ';')
                                         self.last_pos_r=self.r.count
                                         self.next_move_r=True
                                         logging.info(f"------------------------------------r : {self.next_move_r},sef.r.count:{self.r.count},target:{axes.secondary_position} abs:{abs(self.r.count - axes.secondary_position)}")
-                                    else:
-                                        if self.last_pos_r!=self.r.count:
-                                            logging.info(f"------------------------------------r1 : {self.next_move_r},sef.r.count:{self.r.count},target:{axes.secondary_position} abs:{abs(self.r.count - axes.secondary_position)}")
+                                    #else:
+                                    #    if self.last_pos_r!=self.r.count:
+                                    #        logging.info(f"------------------------------------r1 : {self.next_move_r},sef.r.count:{self.r.count},target:{axes.secondary_position} abs:{abs(self.r.count - axes.secondary_position)}")
                                 if axes.axis == util_pb2.AxisIndex.ISO:
                                     if abs(float(self.iso.count) - axes.secondary_position) < 1 and self.next_move_iso==False:
                                         append_to_file(self.statistic_file_name_iso, str(self.iso.count)+ ',' + str(axes.primary_position) + ',' + str(axes.secondary_position) + ';')
                                         self.last_pos_iso=self.iso.count
                                         self.next_move_iso=True
-                                    logging.info(f"------------------------------------iso : {self.next_move_iso},sef.iso.count:{self.iso.count},target:{axes.secondary_position} abs:{abs(float(self.iso.count) - axes.secondary_position)}")              
+                                        logging.info(f"------------------------------------iso : {self.next_move_iso},sef.iso.count:{self.iso.count},target:{axes.secondary_position} abs:{abs(float(self.iso.count) - axes.secondary_position)}")              
 
                     #if serverTx.WhichOneof("Msg") == "pos_move_rep":
                     #    logging.info(f"serverTx.pos_move_rep : {serverTx.pos_move_rep}")
@@ -1384,7 +1398,7 @@ class PPSCtrl_Phrases:
             time7=time.perf_counter() 
             
             self.loop_count+=1
-            if self.loop_count%1500 == 0:
+            if self.loop_count%6000 == 0:
                 logging.info(f"read message and one message process time is:{(time2-time1)*100*10000} / {(time7-time3)*100*10000}")
                 logging.info(f"@@@@@@@@@ Left Cycles: {self.bigcycle} Current Cycle Stage - {self.stage} @@@@@@@ x  : {self.x.cycle}, y : {self.y.cycle}, z : {self.z.cycle}, r : {self.r.cycle},  p : {self.p.cycle},  iso : {self.iso.cycle}")
                 if not self.configfile is None:
