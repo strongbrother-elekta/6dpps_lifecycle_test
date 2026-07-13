@@ -83,13 +83,13 @@ def axis_move_handler_x(self,threadName):
                 #logging.info(f"------axis_move_handler_x are sleeping")  
                 time.sleep(0.01)
         self.phase1_barrier.wait()
-        if self.x.cycle == self.x.cycle: # 新增
-            self.pitch_sem.release()    # 新增
+        #if self.x.cycle == self.x.cycle: # 新增
+        #    self.pitch_sem.release()    # 新增
         
         self.x.cycle = self.x.cycle - 1
         if self.x.cycle <= 0:
             self.x.cycle = 0
-        self.phase2_barrier.wait()
+        #self.phase2_barrier.wait()
         append_to_file(self.statistic_file_name_x,'\n')
     logging.info(f"------axis_move_handler_x thread exit -------------------")  
 
@@ -115,11 +115,11 @@ def axis_move_handler_y(self,threadName):
             else:
                 #logging.info(f"------axis_move_handler_y are sleeping")  
                 time.sleep(0.01)
-        self.phase1_barrier.wait()
+        #self.phase1_barrier.wait()
         self.y.cycle = self.y.cycle - 1
         if self.y.cycle <= 0:
             self.y.cycle = 0      
-        self.phase2_barrier.wait()
+        #self.phase2_barrier.wait()
         append_to_file(self.statistic_file_name_y,'\n')   
     logging.info(f"------axis_move_handler_y thread exit -------------------")
 
@@ -145,11 +145,11 @@ def axis_move_handler_z(self,threadName):
             else:
                 #logging.info(f"------axis_move_handler_z are sleeping")  
                 time.sleep(0.01)
-        self.phase1_barrier.wait()
+        #self.phase1_barrier.wait()
         self.z.cycle = self.z.cycle - 1
         if self.z.cycle <= 0:
             self.z.cycle = 0  
-        self.phase2_barrier.wait()
+        #self.phase2_barrier.wait()
         append_to_file(self.statistic_file_name_z,'\n')
     logging.info(f"------axis_move_handler_z thread exit -------------------")  
 
@@ -157,7 +157,7 @@ def axis_move_handler_z(self,threadName):
 def axis_move_handler_p(self,threadName):
     logging.info(f"thread {threadName} started at {time.ctime(time.time())}") 
     while self.p.cycle>0:
-        self.pitch_sem.acquire()
+        #self.pitch_sem.acquire()
         self.pindex=1
         track_count = len(self.p.track)
         now = dt.datetime.now()
@@ -179,11 +179,11 @@ def axis_move_handler_p(self,threadName):
                 time.sleep(0.01)
         while self.next_move_p==False:
             time.sleep(1)
-        self.roll_sem.release()          
+        #self.roll_sem.release()          
         self.p.cycle = self.p.cycle - 1
         if self.p.cycle <= 0:
             self.p.cycle = 0   
-        self.phase2_barrier.wait()
+        #self.phase2_barrier.wait()
         append_to_file(self.statistic_file_name_p,'\n')
         
     logging.info(f"------axis_move_handler_p thread exit -------------------")        
@@ -191,7 +191,7 @@ def axis_move_handler_p(self,threadName):
 def axis_move_handler_r(self,threadName):
     logging.info(f"thread {threadName} started at {time.ctime(time.time())}") 
     while self.r.cycle>0:
-        self.roll_sem.acquire()
+        #self.roll_sem.acquire()
         self.rindex=1
         track_count = len(self.r.track)
         now = dt.datetime.now()
@@ -215,19 +215,19 @@ def axis_move_handler_r(self,threadName):
         while self.next_move_r==False:    # 新增
             time.sleep(1)               # 新增
             
-        self.iso_sem.release()  # 新增
+        #self.iso_sem.release()  # 新增
         self.r.cycle = self.r.cycle - 1
         if self.r.cycle <= 0:
             self.r.cycle = 0
         time.sleep(self.r.timeout/10)
-        self.phase2_barrier.wait()
+        #self.phase2_barrier.wait()
         append_to_file(self.statistic_file_name_r,'\n')
     logging.info(f"------axis_move_handler_r thread exit -------------------")        
 
 def axis_move_handler_iso(self,threadName):
     logging.info(f"thread {threadName} started at {time.ctime(time.time())}") 
     while self.iso.cycle>0:
-        self.iso_sem.acquire()  # 新增
+        #self.iso_sem.acquire()  # 新增
         self.isoindex=1
         track_count = len(self.iso.track)
         now = dt.datetime.now()
@@ -255,7 +255,7 @@ def axis_move_handler_iso(self,threadName):
         self.iso.cycle = self.iso.cycle - 1
         if self.iso.cycle <= 0:
             self.iso.cycle = 0 
-        self.phase2_barrier.wait()
+        #self.phase2_barrier.wait()
         append_to_file(self.statistic_file_name_iso, '\n')
     logging.info(f"------axis_move_handler_iso thread exit -------------------")
 
@@ -1257,22 +1257,22 @@ class PPSCtrl_AxisMove:
     def create_start_thread(self):
         try:
             thread_heartbeat = threading.Thread(target=heartbeat_process,args=(self,'Thread-heartbeat'))
-            threadx = threading.Thread(target=axis_move_handler_x,args=(self,'Thread-x'))
-            thready = threading.Thread(target=axis_move_handler_y,args=(self,'Thread-y'))
-            threadz = threading.Thread(target=axis_move_handler_z,args=(self,'Thread-z'))
-            threadp = threading.Thread(target=axis_move_handler_p,args=(self,'Thread-p'))
+            #threadx = threading.Thread(target=axis_move_handler_x,args=(self,'Thread-x'))
+            #thready = threading.Thread(target=axis_move_handler_y,args=(self,'Thread-y'))
+            #threadz = threading.Thread(target=axis_move_handler_z,args=(self,'Thread-z'))
+            #threadp = threading.Thread(target=axis_move_handler_p,args=(self,'Thread-p'))
             threadr = threading.Thread(target=axis_move_handler_r,args=(self,'Thread-r'))
-            threadiso = threading.Thread(target=axis_move_handler_iso,args=(self,'Thread-iso'))
+            #threadiso = threading.Thread(target=axis_move_handler_iso,args=(self,'Thread-iso'))
         except:
             logging.info(f"Axis x thread create failed@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@")
         thread_heartbeat.start()
 
-        threadx.start()
-        thready.start()
-        threadz.start()
-        threadp.start()
+        #threadx.start()
+        #thready.start()
+        #threadz.start()
+        #threadp.start()
         threadr.start()
-        threadiso.start()
+        #threadiso.start()
 
 
         
