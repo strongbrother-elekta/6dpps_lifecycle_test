@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?><testsuites name="pytest tests"><testsuite name="pytest" errors="0" failures="1" skipped="0" tests="1" time="0.167" timestamp="2026-07-10T15:58:19.293875+08:00" hostname="AP-0pBlaB1y8IDG"><testcase classname="pps_cycle_test_gamma1_fullrange" name="test_cycle_move" time="0.094"><failure message="AssertionError">ppsctrl_dut = &lt;ppsctrl.ppsctrl_position.PPSCtrl_Position object at 0x00000267814FCD70&gt;
+
+    def test_cycle_move(ppsctrl_dut):
+    
+        gc.set_threshold(700,10,10)
+        # time.sleep(3)
+        ppsctrl_dut.set_z_p_linkage(True)
+        config = configparser.ConfigParser()
+        path = r"../configs/fullrange_move/track_test_config_gamma1_full_range.ini"
+        ppsctrl_dut.set_config_path(path)
+        # ppsctrl_dut._update_cycle_count()
+        config.read(path)
+    
+        axis = config.get("test_axis", "axis")
+        logging.info(f"axis : {axis}")
+    
+        ppsctrl_dut.send_associate_req()
+        assert ppsctrl_dut.recv_associate_rsp()
+    
+    
+        if "x" in axis:
+&gt;           ppsctrl_dut.set_x_track_para(
+                config.get("x_axis", "track"),
+                config.get("x_axis", "track_velocity"),
+                config.getint("x_axis", "timeout"),
+                config.getint("x_axis", "mode"),
+                config.getint("test_axis", "left_cycle_x"),
+            )
+
+pps_cycle_test_gamma1_fullrange.py:28: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+self = &lt;ppsctrl.ppsctrl_position.PPSCtrl_Position object at 0x00000267814FCD70&gt;, track = '0,25,-25,0'
+track_velocity = '5,5,5,5,5', timeout = 1200, mode = 0, cycle = 100000
+
+    def set_x_track_para(
+        self,
+        track,
+        track_velocity,
+        timeout=12,
+        mode=tblservicemode_pb2.PositionMode.ABSOLUTE_MOTION,
+        cycle=0,
+    ):
+    
+        self.x.track = track.split(",")
+        self.x.track_velocity = track_velocity.split(",")
+&gt;       assert len(self.x.track) == len(self.x.track_velocity)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E       AssertionError
+
+..\ppsctrl\ppsctrl_position.py:1092: AssertionError</failure></testcase></testsuite></testsuites>
