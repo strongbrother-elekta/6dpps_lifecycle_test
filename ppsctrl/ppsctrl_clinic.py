@@ -82,10 +82,7 @@ def axis_move_handler_x(self,threadName):
             else:
                 #logging.info(f"------axis_move_handler_x are sleeping")  
                 time.sleep(0.01)
-        self.phase1_barrier.wait()
-        if self.x.cycle == self.x.cycle: # 新增
-            self.pitch_sem.release()    # 新增
-        
+        self.phase1_barrier.wait()        
         self.x.cycle = self.x.cycle - 1
         if self.x.cycle <= 0:
             self.x.cycle = 0
@@ -116,6 +113,7 @@ def axis_move_handler_y(self,threadName):
                 #logging.info(f"------axis_move_handler_y are sleeping")  
                 time.sleep(0.01)
         self.phase1_barrier.wait()
+         
         self.y.cycle = self.y.cycle - 1
         if self.y.cycle <= 0:
             self.y.cycle = 0      
@@ -146,6 +144,11 @@ def axis_move_handler_z(self,threadName):
                 #logging.info(f"------axis_move_handler_z are sleeping")  
                 time.sleep(0.01)
         self.phase1_barrier.wait()
+        
+        while self.next_move_z==False:
+            time.sleep(1)
+        self.pitch_sem.release()
+        
         self.z.cycle = self.z.cycle - 1
         if self.z.cycle <= 0:
             self.z.cycle = 0  
