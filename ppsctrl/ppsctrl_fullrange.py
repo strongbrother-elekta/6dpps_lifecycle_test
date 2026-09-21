@@ -145,6 +145,9 @@ def axis_move_handler_z(self,threadName):
             else:
                 #logging.info(f"------axis_move_handler_z are sleeping")  
                 time.sleep(0.01)
+                
+        while self.next_move_z==False:
+            time.sleep(1)
         self.phase1_barrier.wait()
         self.z.cycle = self.z.cycle - 1
         if self.z.cycle <= 0:
@@ -814,7 +817,7 @@ class PPSCtrl_Fullrange:
         serverRx.association_id = 1
         self.sequence_num_bi = self.sequence_num_bi + 1
         serverRx.sequence_num_bi = self.sequence_num_bi
-        serverRx.assoc_req.version = '1.0.0.74'
+        serverRx.assoc_req.version = '1.0.1.79'
         serverRx_protobuf_data = serverRx.SerializeToString()
         self.traceclient.sendMsg(serverRx_protobuf_data)
         logging.info(f"send_associate_req : {serverRx}")
